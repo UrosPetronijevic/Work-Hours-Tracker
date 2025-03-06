@@ -37,3 +37,5 @@ export const calculateOrthodoxEaster = (
 
   return []; // Return an empty array if Easter is not in the current month
 };
+
+export const verskiPraznikArr = calculateOrthodoxEaster();

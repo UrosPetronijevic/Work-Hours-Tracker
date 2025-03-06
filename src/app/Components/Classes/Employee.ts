@@ -1,7 +1,7 @@
 import { daysArray, thisMonth, thisYear } from "../Static Data/Dates";
-import { drzavniPraznici } from "../Static Data/PublicHolidays";
-import { calculateOrthodoxEaster } from "../Static Data/OrtodoxEaster";
-import { populateWeekends } from "../Static Data/Weekends";
+import { drzavniPraznikArr } from "../Static Data/PublicHolidays";
+import { weekendsArr } from "../Static Data/Weekends";
+import { verskiPraznikArr } from "../Static Data/OrtodoxEaster";
 
 export class Employee {
   kadrovskiBroj: string = "";
@@ -19,8 +19,6 @@ export class Employee {
   fondSati: number = 0;
   redovanRad: number = 0;
 
-  drzavniVerskiPraznik: number = 0;
-
   godisnjiOdmor: number = 0;
   placenoOdsustvo: number = 0;
   bolovanje30: number = 0;
@@ -37,33 +35,19 @@ export class Employee {
 
   selectedDaysArr: number[] = [];
 
-  weekendsArr: number[] = []; // New array for weekends
-  verskiPraznikArr: number[] = [];
-  drzavniPraznikArr: number[] = [];
-
   pripravnostSati: (number | string | null)[] = [];
   pripravnostTotal: number = 0;
 
   constructor() {
-    // Populate the weekendsArr with weekends (Saturdays and Sundays)
-    this.weekendsArr = populateWeekends();
-
-    // Populate state holidays based on the current month
-    this.populateDrzavniPraznici(thisMonth);
-
-    // Calculate Orthodox Easter for the current year and populate verskiPraznikArr
-    this.verskiPraznikArr = calculateOrthodoxEaster();
-  }
-
-  // Populate drzavniPraznikArr based on the current month
-  private populateDrzavniPraznici(month: number): void {
-    this.drzavniPraznikArr = drzavniPraznici[month].dani;
+    this.setStats();
   }
 
   // Method to get kadrovskiBroj (ID)
   getId(): string {
     return this.kadrovskiBroj;
   }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   setDodatnoOpt() {
     this.dodatnoOpt = !this.dodatnoOpt;
@@ -72,6 +56,8 @@ export class Employee {
   setPripravnost() {
     this.pripravnost = !this.pripravnost;
   }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   setPripravnostSati(hours: (number | string | null)[]) {
     this.pripravnostSati = hours;
@@ -87,13 +73,15 @@ export class Employee {
 
     this.pripravnostTotal = sum;
   }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  //Godisnji odmor, placeno odsustvo,drzavni verski praznici
   setStats() {
     this.godisnjiOdmor = this.godisnjiOdmorArr.length * 8;
     this.placenoOdsustvo = this.placenoOdsustvoArr.length * 8;
-    this.drzavniVerskiPraznik =
-      (this.verskiPraznikArr.length + this.drzavniPraznikArr.length) * 8;
   }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   calculateWorkingHours() {
     this.fondSati = 0; // Reset total working hours
@@ -107,8 +95,8 @@ export class Employee {
       if (
         dayOfWeek !== 0 && // Not Sunday
         dayOfWeek !== 6 && // Not Saturday
-        !this.drzavniPraznikArr.includes(day) &&
-        !this.verskiPraznikArr.includes(day)
+        !drzavniPraznikArr.includes(day) &&
+        !verskiPraznikArr.includes(day)
       ) {
         this.fondSati += 8;
       }
@@ -117,9 +105,9 @@ export class Employee {
       if (
         dayOfWeek !== 0 && // Not Sunday
         dayOfWeek !== 6 && // Not Saturday
-        !this.weekendsArr.includes(day) &&
-        !this.drzavniPraznikArr.includes(day) &&
-        !this.verskiPraznikArr.includes(day) &&
+        !weekendsArr.includes(day) &&
+        !drzavniPraznikArr.includes(day) &&
+        !verskiPraznikArr.includes(day) &&
         !this.godisnjiOdmorArr.includes(day) &&
         !this.placenoOdsustvoArr.includes(day) &&
         !this.slavaArr.includes(day)

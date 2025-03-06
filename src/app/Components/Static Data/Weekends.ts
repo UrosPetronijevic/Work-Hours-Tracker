@@ -16,3 +16,5 @@ export const populateWeekends = () => {
 
   return weekendsArr;
 };
+
+export const weekendsArr: number[] = populateWeekends();
