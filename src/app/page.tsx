@@ -2,9 +2,8 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div>
-      <h1>hello</h1>
-      <Link href="/Components/Tables/Table1">Table1</Link>
+    <div className="max-w-screen bg-red-200 flex justify-center min-h-screen items-center">
+      <h1 className="text-7xl">hello</h1>
     </div>
   );
 }

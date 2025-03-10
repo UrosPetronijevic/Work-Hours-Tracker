@@ -15,6 +15,8 @@ export class Employee {
 
   dodatnoOpt: boolean = false;
   pripravnost: boolean = false;
+  prekovremeni: boolean = false;
+  prevoz: boolean = false;
 
   fondSati: number = 0;
   redovanRad: number = 0;
@@ -38,7 +40,28 @@ export class Employee {
   pripravnostSati: (number | string | null)[] = [];
   pripravnostTotal: number = 0;
 
-  constructor() {
+  constructor(
+    ime: string,
+    prezime: string,
+    kadrovskiBroj: string,
+    dodatnoOpt: boolean,
+    pripravnost: boolean,
+    prekovremeni: boolean,
+    prevoz: boolean,
+    stalni: boolean,
+    odredjeno: boolean,
+    neodredjeno: boolean,
+    zadruga: boolean
+  ) {
+    this.imeZaposlenog = ime;
+    this.prezimeZaposlenog = prezime;
+    this.kadrovskiBroj = kadrovskiBroj;
+
+    this.dodatnoOpt = dodatnoOpt;
+    this.pripravnost = pripravnost;
+    this.prekovremeni = prekovremeni;
+    this.prevoz = prevoz;
+
     this.setStats();
   }
 
@@ -49,6 +72,7 @@ export class Employee {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  /// UPOZORENJE NAPRAVITI STATE PA ZAMENITI VALUE TA BI SE TRIGEROVAO REFRESH / a ne ovako kao sto je sad
   setDodatnoOpt() {
     this.dodatnoOpt = !this.dodatnoOpt;
   }
@@ -79,6 +103,9 @@ export class Employee {
   setStats() {
     this.godisnjiOdmor = this.godisnjiOdmorArr.length * 8;
     this.placenoOdsustvo = this.placenoOdsustvoArr.length * 8;
+    this.bolovanje30 = this.bolovanje30Arr.length * 8;
+    this.bolovanje100 = this.bolovanje100Arr.length * 8;
+    this.bolovanjeNaTertFonda = this.bolovanjeNaTertFondaArr.length * 8;
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
