@@ -2,11 +2,12 @@ import { daysArray, thisMonth, thisYear } from "../Static Data/Dates";
 import { drzavniPraznikArr } from "../Static Data/PublicHolidays";
 import { weekendsArr } from "../Static Data/Weekends";
 import { verskiPraznikArr } from "../Static Data/OrtodoxEaster";
+import { calculateWorkingHours } from "../Static Data/WorkHours";
 
 export class Employee {
-  kadrovskiBroj: string = "";
   imeZaposlenog: string = "";
   prezimeZaposlenog: string = "";
+  kadrovskiBroj: string = "";
 
   stalniZaposleni: boolean = false;
   zaposleniNaOdredjeno: boolean = false;
@@ -37,21 +38,21 @@ export class Employee {
 
   selectedDaysArr: number[] = [];
 
-  pripravnostSati: (number | string | null)[] = [];
+  pripravnostSatiArr: (number | string | null)[] = [];
   pripravnostTotal: number = 0;
 
   constructor(
     ime: string,
     prezime: string,
     kadrovskiBroj: string,
-    dodatnoOpt: boolean,
-    pripravnost: boolean,
-    prekovremeni: boolean,
-    prevoz: boolean,
     stalni: boolean,
     odredjeno: boolean,
     neodredjeno: boolean,
-    zadruga: boolean
+    zadruga: boolean,
+    dodatnoOpt: boolean,
+    pripravnost: boolean,
+    prekovremeni: boolean,
+    prevoz: boolean
   ) {
     this.imeZaposlenog = ime;
     this.prezimeZaposlenog = prezime;
@@ -61,6 +62,18 @@ export class Employee {
     this.pripravnost = pripravnost;
     this.prekovremeni = prekovremeni;
     this.prevoz = prevoz;
+
+    this.stalniZaposleni = stalni;
+    this.zaposleniNaOdredjeno = odredjeno;
+    this.zaposleniNaNeodredjeno = neodredjeno;
+    this.zaposleniPrekoZadruge = zadruga;
+
+    this.fondSati = calculateWorkingHours();
+
+    this.pripravnostSatiArr = Array.from(
+      { length: daysArray.length },
+      () => 16
+    );
 
     this.setStats();
   }
@@ -83,16 +96,11 @@ export class Employee {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  setPripravnostSati(hours: (number | string | null)[]) {
-    this.pripravnostSati = hours;
-  }
-
-  setPripravnostTotal(hours: (number | string | null)[]) {
-    let arr = [...hours].filter((hour) => hour !== null);
+  setPripravnostTotal() {
     let sum = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-      sum += Number(arr[i]);
+    for (let i = 0; i < this.pripravnostSatiArr.length; i++) {
+      sum += Number(this.pripravnostSatiArr[i]);
     }
 
     this.pripravnostTotal = sum;
@@ -110,23 +118,12 @@ export class Employee {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  calculateWorkingHours() {
-    this.fondSati = 0; // Reset total working hours
+  calculateRedovanRad() {
     this.redovanRad = 0; // Reset actual worked hours
 
     for (const day of daysArray) {
       const currentDate = new Date(thisYear, thisMonth, day);
       const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 6 = Saturday
-
-      // Calculate possible working hours (fondSati)
-      if (
-        dayOfWeek !== 0 && // Not Sunday
-        dayOfWeek !== 6 && // Not Saturday
-        !drzavniPraznikArr.includes(day) &&
-        !verskiPraznikArr.includes(day)
-      ) {
-        this.fondSati += 8;
-      }
 
       // Calculate actual worked hours (redovanRad)
       if (

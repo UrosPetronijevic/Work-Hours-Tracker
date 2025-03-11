@@ -1,0 +1,15 @@
+export const columns = [
+  "Kadrovski broj",
+  "Ime zapos./kandidata",
+  "Fond sati",
+  "Datum početka",
+  "Datum završetka",
+  "Redovan rad",
+  "Godišnji odmor",
+  "Državni/verski praznik",
+  "Plaćeno odsustvo",
+  "Bolovanje do 30d 65%",
+  "Bolovanje 100%",
+  "Bolovanje na teret Fonda",
+  "Porodiljsko odsustvo",
+];

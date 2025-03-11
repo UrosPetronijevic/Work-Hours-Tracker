@@ -20,8 +20,11 @@
         "prekovremeni": false,
         "prevoz": false,
         "prezimeZaposlenog": "Tuki",
-        "pripravnost": false,
-        "pripravnostSati": [],
+        "pripravnost": true,
+        "pripravnostSatiArr": [
+          16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+          16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16
+        ],
         "pripravnostTotal": 0,
         "redovanRad": 0,
         "selectedDaysArr": [],

@@ -1,8 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Employee } from "../../Classes/Employee";
-import { thisMonth, thisYear } from "../../Static Data/Dates"; // Make sure thisMonth and thisYear are correctly imported
+import { Employee } from "../Classes/Employee";
+import { thisMonth, thisYear } from "../Static Data/Dates";
+import Table1 from "./Table1";
+import Table2 from "./Table2";
+import Table3 from "./Table3";
+import Table4 from "./Table4";
+import Table5 from "./Table5";
+import Table6 from "./Table6";
+import Table7 from "./Table7";
+import Table8 from "./Table8";
+import TableNav from "./TableNav";
 
 interface Data {
   [key: string]: {
@@ -10,10 +19,11 @@ interface Data {
   };
 }
 
-export default function Page() {
+export default function page() {
+  const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null); // Error state
-  const [employees, setEmployees] = useState<Employee[]>([]); // Initialize employees as an empty array
+  const [activeTable, setActiveTable] = useState<string | null>(null);
 
   useEffect(() => {
     // Fetch data from your API route
@@ -45,29 +55,36 @@ export default function Page() {
     fetchData(); // Call fetchData function
   }, [thisMonth, thisYear]); // Run the effect when `thisMonth` or `thisYear` changes
 
+  const renderTable = () => {
+    switch (activeTable) {
+      case "Table1":
+        return <Table1 employees={employees} />;
+      case "Table2":
+        return <Table2 employees={employees} />;
+      case "Table3":
+        return <Table3 />;
+      case "Table4":
+        return <Table4 />;
+      case "Table5":
+        return <Table5 />;
+      case "Table6":
+        return <Table6 />;
+      case "Table7":
+        return <Table7 />;
+      case "Table8":
+        return <Table8 />;
+      default:
+        return <Table1 employees={employees} />;
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="bg-slate-500 text-white w-full p-4 flex flex-col gap-4">
-      <h1 className="text-3xl">Employee Data</h1>
-
-      <div>
-        <div>
-          {employees.length > 0 ? (
-            employees.map((employee, index) => (
-              <div key={index}>
-                <p>
-                  {employee.imeZaposlenog} {employee.prezimeZaposlenog}
-                </p>
-                <p>{employee.kadrovskiBroj}</p>
-              </div>
-            ))
-          ) : (
-            <p>No employees for this month</p>
-          )}
-        </div>
-      </div>
+    <div className="max-w-full h-full">
+      <TableNav activeTable={activeTable} setActiveTable={setActiveTable} />
+      <div className="px-4 py-2 rounded">{renderTable()}</div>
     </div>
   );
 }
