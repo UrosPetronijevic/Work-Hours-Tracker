@@ -70,9 +70,12 @@ export class Employee {
 
     this.fondSati = calculateWorkingHours();
 
-    this.pripravnostSatiArr = Array.from(
-      { length: daysArray.length },
-      () => 16
+    this.pripravnostSatiArr = daysArray.map((day) =>
+      weekendsArr.includes(day) ||
+      verskiPraznikArr.includes(day) ||
+      drzavniPraznikArr.includes(day)
+        ? null
+        : 16
     );
 
     this.setStats();

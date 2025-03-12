@@ -38,7 +38,13 @@ export default function Table2({ employees }: Table2Props) {
                     <td
                       key={`employee-${employeeIndex}-hours-${hourIndex}`}
                       className={`py-2 border border-slate-500 ${
-                        hour === 16 ? "text-green-500" : ""
+                        hour === 16
+                          ? "text-green-500"
+                          : hour === 0
+                          ? "text-red-500"
+                          : hour === 7.5 || hour === 8.5
+                          ? "text-amber-500"
+                          : ""
                       }`}
                     >
                       {hour}
