@@ -12,6 +12,7 @@ import Table6 from "./Table6";
 import Table7 from "./Table7";
 import Table8 from "./Table8";
 import TableNav from "./TableNav";
+import Formpage from "../Form Components/Formpage";
 
 interface Data {
   [key: string]: {
@@ -24,6 +25,8 @@ export default function page() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null); // Error state
   const [activeTable, setActiveTable] = useState<string | null>(null);
+
+  const [form, setForm] = useState<boolean>(true);
 
   useEffect(() => {
     // Fetch data from your API route
@@ -82,9 +85,19 @@ export default function page() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="max-w-full h-full">
+    <div className="max-w-full h-full px-4 flex flex-col">
       <TableNav activeTable={activeTable} setActiveTable={setActiveTable} />
-      <div className="px-4 py-2 rounded">{renderTable()}</div>
+      <div className="py-2 rounded">{renderTable()}</div>
+      <button
+        className="bg-indigo-400 text-white rounded-md text-2xl p-2 self-end"
+        onClick={() => {
+          setForm(true);
+        }}
+      >
+        Dodaj novog clana
+      </button>
+
+      {form && <Formpage setEmployees={setEmployees} />}
     </div>
   );
 }
