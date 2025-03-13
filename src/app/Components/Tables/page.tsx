@@ -13,6 +13,7 @@ import Table7 from "./Table7";
 import Table8 from "./Table8";
 import TableNav from "./TableNav";
 import Formpage from "../Form Components/Formpage";
+import Table9 from "./Table9";
 
 interface Data {
   [key: string]: {
@@ -76,6 +77,8 @@ export default function page() {
         return <Table7 />;
       case "Table8":
         return <Table8 />;
+      case "Table9":
+        return <Table9 />;
       default:
         return <Table1 employees={employees} />;
     }

@@ -8,11 +8,15 @@ export default function Navigation() {
       </li>
 
       <li className="hover:underline text-blue-900 p-2">
-        <Link href="/Components/Tables">Tables</Link>
+        <Link href="/Components/Tables">Tabele</Link>
       </li>
 
       <li className="hover:underline text-blue-900 p-2">
-        <Link href="/Components">Graphs</Link>
+        <Link href="/Components">Grafikoni</Link>
+      </li>
+
+      <li className="hover:underline text-blue-900 p-2">
+        <Link href="/Components">Pomoc</Link>
       </li>
     </ul>
   );

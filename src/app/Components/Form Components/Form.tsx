@@ -19,10 +19,11 @@ export default function Form({ setEmployees }: FormProps) {
   const [kadrovskiBroj, setKadrovskiBroj] = useState<string>("");
   //////////////////////////////////////////////////////////////////////////////////
 
-  const [stalni, setStalni] = useState<boolean>(false);
   const [odredjeno, setOdredjeno] = useState<boolean>(false);
   const [neodredjeno, setNeodredjeno] = useState<boolean>(false);
   const [zadruga, setZadruga] = useState<boolean>(false);
+  const [pp, setPp] = useState<boolean>(false);
+
   //////////////////////////////////////////////////////////////////////////////////
 
   const [dodatnoOpt, setDodatnoOpt] = useState<boolean>(false);
@@ -33,7 +34,7 @@ export default function Form({ setEmployees }: FormProps) {
   //////////////////////////////////////////////////////////////////////////////////
 
   return (
-    <div className="w-[80%] bg-white h-[80%] grid grid-cols-3 p-10 rounded-2xl gap-8 items-center">
+    <div className="w-[80%] bg-white h-[80%] grid grid-cols-[33%_66%] p-10 rounded-2xl gap-8 items-center">
       <Section1
         ime={ime}
         setIme={setIme}
@@ -41,8 +42,8 @@ export default function Form({ setEmployees }: FormProps) {
         setPrezime={setPrezime}
         kadrovskiBroj={kadrovskiBroj}
         setKadrovskiBroj={setKadrovskiBroj}
-        stalni={stalni}
-        setStalni={setStalni}
+        pp={pp}
+        setPp={setPp}
         odredjeno={odredjeno}
         setOdredjeno={setOdredjeno}
         neodredjeno={neodredjeno}
@@ -62,10 +63,10 @@ export default function Form({ setEmployees }: FormProps) {
         setPrevoz={setPrevoz}
       />
 
-      <div>
+      {/* <div>
         <Section3 />
-        <button>Dodaj Clana</button>
-      </div>
+        <button>Zavrsi</button>
+      </div> */}
     </div>
   );
 }

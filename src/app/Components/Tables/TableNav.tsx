@@ -14,8 +14,8 @@ export default function TableNav({
   };
 
   return (
-    <div className="grid grid-cols-8">
-      {Array.from({ length: 8 }, (_, i) => (
+    <div className="grid grid-cols-9">
+      {Array.from({ length: 9 }, (_, i) => (
         <button
           key={i}
           onClick={() => handleTableClick(`Table${i + 1}`)}

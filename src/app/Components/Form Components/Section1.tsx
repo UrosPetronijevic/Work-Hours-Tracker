@@ -5,8 +5,8 @@ type Section1Props = {
   setPrezime: React.Dispatch<React.SetStateAction<string>>;
   kadrovskiBroj: string;
   setKadrovskiBroj: React.Dispatch<React.SetStateAction<string>>;
-  stalni: boolean;
-  setStalni: React.Dispatch<React.SetStateAction<boolean>>;
+  pp: boolean;
+  setPp: React.Dispatch<React.SetStateAction<boolean>>;
   odredjeno: boolean;
   setOdredjeno: React.Dispatch<React.SetStateAction<boolean>>;
   neodredjeno: boolean;
@@ -22,8 +22,8 @@ export default function Section1({
   setPrezime,
   kadrovskiBroj,
   setKadrovskiBroj,
-  stalni,
-  setStalni,
+  pp,
+  setPp,
   odredjeno,
   setOdredjeno,
   neodredjeno,
@@ -60,7 +60,7 @@ export default function Section1({
       </label>
 
       <label className="flex gap-2 flex-col">
-        <span>Kadrovski br.:</span>
+        <span>Kadrovski br:</span>
         <input
           placeholder="123"
           type="text"
@@ -75,19 +75,20 @@ export default function Section1({
       <div className="flex gap-4 bg-blue-100 p-2 rounded">
         {/* Left Column */}
         <div className="flex flex-col w-full justify-center gap-4 p-2">
-          {/* Stalni */}
+          {/* Neodređeno */}
           <div className="p-2 bg-white rounded">
             <label className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700">Stalni</span>
+              <span className="text-sm font-medium text-gray-700">
+                Neodređeno
+              </span>
               <input
                 type="checkbox"
-                checked={stalni}
-                onChange={() => setStalni(!stalni)}
+                checked={neodredjeno}
+                onChange={() => setNeodredjeno(!neodredjeno)}
                 className="w-5 h-5 accent-blue-600 rounded cursor-pointer"
               />
             </label>
           </div>
-
           {/* Određeno */}
           <div className="p-2 bg-white rounded">
             <label className="flex items-center justify-between">
@@ -106,16 +107,14 @@ export default function Section1({
 
         {/* Right Column */}
         <div className="flex flex-col w-full justify-center gap-4 p-2">
-          {/* Neodređeno */}
+          {/* Stalni */}
           <div className="p-2 bg-white rounded">
             <label className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700">
-                Neodređeno
-              </span>
+              <span className="text-sm font-medium text-gray-700">PP</span>
               <input
                 type="checkbox"
-                checked={neodredjeno}
-                onChange={() => setNeodredjeno(!neodredjeno)}
+                checked={pp}
+                onChange={() => setPp(!pp)}
                 className="w-5 h-5 accent-blue-600 rounded cursor-pointer"
               />
             </label>
