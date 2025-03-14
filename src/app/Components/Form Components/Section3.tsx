@@ -2,6 +2,7 @@ import Ekspozitura from "./Subsections/Ekspozitura";
 import Filijala from "./Subsections/Filijala";
 import Nbs from "./Subsections/Nbs";
 import Prijem from "./Subsections/Prijem";
+import Vozaci from "./Subsections/Vozaci";
 
 type Section3Props = {
   pripravnost: boolean;
@@ -41,15 +42,7 @@ export default function Section3({
         </div>
       )}
 
-      {vozac && (
-        <div
-          className={`flex flex-col select-none ${
-            pripravnost ? "text-slate-700 enabled" : "text-slate-400 disabled"
-          }`}
-        >
-          <h1 className="self-center text-3xl">vozac</h1>
-        </div>
-      )}
+      {vozac && <Vozaci pripravnost={pripravnost} />}
 
       <button className="bg-[#F99417] self-center p-2 w-[70%] rounded-md">
         Zavrsi

@@ -15,10 +15,8 @@ export default function Prijem({ pripravnost }: PrijemProps) {
 
   const [clanKomisije3, setClanKomisije3] = useState<boolean>(false);
   const [zamenikClana3, setZamenikClana3] = useState<boolean>(false);
-  //////////////////////////////////////////////////////////////////////////////////
 
   const handlePosition = (selectedOption: string) => {
-    // Reset all new states to false
     setPredsednikKomisije(false);
     setZamenikPredsednika(false);
     setClanKomisije2(false);
@@ -26,34 +24,27 @@ export default function Prijem({ pripravnost }: PrijemProps) {
     setClanKomisije3(false);
     setZamenikClana3(false);
 
-    // Set the selected option to true
     switch (selectedOption) {
       case "predsednikKomisije":
-        setPredsednikKomisije(true);
+        setPredsednikKomisije(!predsednikKomisije);
         break;
       case "zamenikPredsednika":
-        setZamenikPredsednika(true);
+        setZamenikPredsednika(!zamenikPredsednika);
         break;
       case "clanKomisije2":
-        setClanKomisije2(true);
+        setClanKomisije2(!clanKomisije2);
         break;
       case "zamenikClana2":
-        setZamenikClana2(true);
+        setZamenikClana2(!zamenikClana2);
         break;
       case "clanKomisije3":
-        setClanKomisije3(true);
+        setClanKomisije3(!clanKomisije3);
         break;
       case "zamenikClana3":
-        setZamenikClana3(true);
-        break;
-      default:
+        setZamenikClana3(!zamenikClana3);
         break;
     }
   };
-
-  //////////////////////////////////////////////////////////////////////////////////
-
-  const handleAsign = () => {};
 
   return (
     <div
@@ -74,7 +65,9 @@ export default function Prijem({ pripravnost }: PrijemProps) {
                 <input
                   type="checkbox"
                   disabled={!pripravnost}
-                  className=" w-5 h-5"
+                  className="w-5 h-5"
+                  checked={predsednikKomisije}
+                  readOnly
                 />
                 <span>Predsednik</span>
               </label>
@@ -85,9 +78,11 @@ export default function Prijem({ pripravnost }: PrijemProps) {
                 <input
                   type="checkbox"
                   disabled={!pripravnost}
-                  className=" w-5 h-5"
+                  className="w-5 h-5"
+                  checked={zamenikPredsednika}
+                  readOnly
                 />
-                <span>Zamenik Predsednika</span>
+                <span>Zamenik predsednika</span>
               </label>
             </li>
 
@@ -96,7 +91,9 @@ export default function Prijem({ pripravnost }: PrijemProps) {
                 <input
                   type="checkbox"
                   disabled={!pripravnost}
-                  className=" w-5 h-5"
+                  className="w-5 h-5"
+                  checked={clanKomisije2}
+                  readOnly
                 />
                 <span>Drugi clan</span>
               </label>
@@ -107,7 +104,9 @@ export default function Prijem({ pripravnost }: PrijemProps) {
                 <input
                   type="checkbox"
                   disabled={!pripravnost}
-                  className=" w-5 h-5"
+                  className="w-5 h-5"
+                  checked={zamenikClana2}
+                  readOnly
                 />
                 <span>Zamenik drugog clana</span>
               </label>
@@ -118,7 +117,9 @@ export default function Prijem({ pripravnost }: PrijemProps) {
                 <input
                   type="checkbox"
                   disabled={!pripravnost}
-                  className=" w-5 h-5"
+                  className="w-5 h-5"
+                  checked={clanKomisije3}
+                  readOnly
                 />
                 <span>Treci clan</span>
               </label>
@@ -129,7 +130,9 @@ export default function Prijem({ pripravnost }: PrijemProps) {
                 <input
                   type="checkbox"
                   disabled={!pripravnost}
-                  className=" w-5 h-5"
+                  className="w-5 h-5"
+                  checked={zamenikClana3}
+                  readOnly
                 />
                 <span>Zamenik treceg clana</span>
               </label>

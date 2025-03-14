@@ -83,7 +83,7 @@ export default function Ekspozitura({ pripravnost }: EkspozituraProps) {
                   disabled={!pripravnost}
                   className=" w-5 h-5"
                 />
-                <span>Prvi Zamenik</span>
+                <span>Prvi zamenik</span>
               </label>
             </li>
 
@@ -94,7 +94,7 @@ export default function Ekspozitura({ pripravnost }: EkspozituraProps) {
                   disabled={!pripravnost}
                   className=" w-5 h-5"
                 />
-                <span>Drugi Zamenik</span>
+                <span>Drugi zamenik</span>
               </label>
             </li>
           </ul>
@@ -121,7 +121,7 @@ export default function Ekspozitura({ pripravnost }: EkspozituraProps) {
                   disabled={!pripravnost}
                   className=" w-5 h-5"
                 />
-                <span>Prvi Zamenik</span>
+                <span>Prvi zamenik</span>
               </label>
             </li>
 
@@ -132,7 +132,7 @@ export default function Ekspozitura({ pripravnost }: EkspozituraProps) {
                   disabled={!pripravnost}
                   className=" w-5 h-5"
                 />
-                <span>Drugi Zamenik</span>
+                <span>Drugi zamenik</span>
               </label>
             </li>
           </ul>
