@@ -3,14 +3,12 @@ export class Sakljucari {
     sakljucarGornje: null as string | null,
     zamenik1Gornje: null as string | null,
     zamenik2Gornje: null as string | null,
-    nepredvidjeniGornje: null as string | null,
   };
 
   sakljucariDonje = {
     sakljucarDonje: null as string | null,
     zamenik1Donje: null as string | null,
     zamenik2Donje: null as string | null,
-    nepredvidjeniDonje: null as string | null,
   };
 
   setSakljucar(key: string, value: string) {
@@ -53,12 +51,6 @@ export class Sakljucari {
         break;
       case "zamenik4":
         this.sakljucariDonje.zamenik2Donje = value;
-        break;
-      case "neodredjeni1":
-        this.sakljucariGornje.nepredvidjeniGornje = value;
-        break;
-      case "neodredjeni2":
-        this.sakljucariDonje.nepredvidjeniDonje = value;
         break;
     }
   }
@@ -107,4 +99,116 @@ export class Vozac {
     if (key === "vozac") this.vozac = value;
     if (key === "zamenaVozaca") this.zamenaVozaca = value;
   }
+}
+
+export class Nepredvidjeni {
+  filijala = {
+    nepredvidjeniGornje: {
+      nepredvidjeniSakljucar: null as string | null,
+      nepredvidjeniZamenik1: null as string | null,
+      nepredvidjeniZamenik2: null as string | null,
+    },
+
+    nepredvidjeniDonje: {
+      nepredvidjeniSakljucar: null as string | null,
+      nepredvidjeniZamenik1: null as string | null,
+      nepredvidjeniZamenik2: null as string | null,
+    },
+  };
+
+  ekspozitura = {
+    nepredvidjeniGornje: {
+      nepredvidjeniSakljucar: null as string | null,
+      nepredvidjeniZamenik1: null as string | null,
+      nepredvidjeniZamenik2: null as string | null,
+    },
+
+    nepredvidjeniDonje: {
+      nepredvidjeniSakljucar: null as string | null,
+      nepredvidjeniZamenik1: null as string | null,
+      nepredvidjeniZamenik2: null as string | null,
+    },
+  };
+
+  nepredvidjeniPrijem = {
+    nepredvidjeniPredsednik: null as string | null,
+    nepredvidjeniZamenikPredsednika: null as string | null,
+
+    nepredvidjeniClan2: null as string | null,
+    nepredvidjeniZamenikClana2: null as string | null,
+
+    nepredvidjeniClan3: null as string | null,
+    nepredvidjeniZamenikClana3: null as string | null,
+  };
+
+  nepredvidjeniNbs = {
+    nepredvidjeniPredsednik: null as string | null,
+    nepredvidjeniZamenikPredsednika: null as string | null,
+
+    nepredvidjeniClan2: null as string | null,
+    nepredvidjeniZamenikClana2: null as string | null,
+
+    nepredvidjeniClan3: null as string | null,
+    nepredvidjeniZamenikClana3: null as string | null,
+  };
+
+  nepredvidjeniVozaci = {
+    nepredvidjeniVozac: null as string | null,
+    nepredvidjeniZamenikVozaca: null as string | null,
+  };
+}
+
+export class Groups {
+  filijala = {
+    sakljucariGornje: {
+      sakljucar: null as string | null,
+      zamenik1: null as string | null,
+      zamenik2: null as string | null,
+      nepredvidjeni: null as string | null,
+    },
+    sakljucariDonje: {
+      sakljucar: null as string | null,
+      zamenik1: null as string | null,
+      zamenik2: null as string | null,
+      nepredvidjeni: null as string | null,
+    },
+  };
+
+  ekspozitura = {
+    sakljucariGornje: {
+      sakljucar: null as string | null,
+      zamenik1: null as string | null,
+      zamenik2: null as string | null,
+      nepredvidjeni: null as string | null,
+    },
+    sakljucariDonje: {
+      sakljucar: null as string | null,
+      zamenik1: null as string | null,
+      zamenik2: null as string | null,
+      nepredvidjeni: null as string | null,
+    },
+  };
+
+  nbs = {
+    predsednik: null as string | null,
+    zamenikPredsednika: null as string | null,
+    clanKomisije2: null as string | null,
+    zamenikClana2: null as string | null,
+    clanKomisije3: null as string | null,
+    zamenikClana3: null as string | null,
+  };
+
+  prijem = {
+    predsednik: null as string | null,
+    zamenikPredsednika: null as string | null,
+    clanKomisije2: null as string | null,
+    zamenikClana2: null as string | null,
+    clanKomisije3: null as string | null,
+    zamenikClana3: null as string | null,
+  };
+
+  vozaci = {
+    vozac: null as string | null,
+    zamenaVozaca: null as string | null,
+  };
 }

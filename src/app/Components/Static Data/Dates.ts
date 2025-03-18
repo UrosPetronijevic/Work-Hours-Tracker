@@ -1,6 +1,6 @@
 // Get the current date
 export const today = new Date();
-export const thisMonth = today.getMonth();
+export const thisMonth = today.getMonth() + 1;
 export const thisYear = today.getFullYear();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

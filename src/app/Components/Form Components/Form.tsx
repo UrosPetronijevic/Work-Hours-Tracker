@@ -5,12 +5,14 @@ import { Employee } from "../Classes/Employee";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
+import { Groups } from "../Classes/Groups";
 
 type FormProps = {
   setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
-export default function Form({ setEmployees }: FormProps) {
+export default function Form({ setEmployees, setGroups }: FormProps) {
   const [employee, setEmployee] = useState<Employee>();
   //////////////////////////////////////////////////////////////////////////////////
 
@@ -61,12 +63,8 @@ export default function Form({ setEmployees }: FormProps) {
         setPrekovremeni={setPrekovremeni}
         prevoz={prevoz}
         setPrevoz={setPrevoz}
+        setGroups={setGroups}
       />
-
-      {/* <div>
-        <Section3 />
-        <button>Zavrsi</button>
-      </div> */}
     </div>
   );
 }

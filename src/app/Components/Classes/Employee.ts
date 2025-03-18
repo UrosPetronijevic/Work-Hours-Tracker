@@ -9,10 +9,10 @@ export class Employee {
   prezimeZaposlenog: string = "";
   kadrovskiBroj: string = "";
 
-  stalniZaposleni: boolean = false;
   zaposleniNaOdredjeno: boolean = false;
   zaposleniNaNeodredjeno: boolean = false;
   zaposleniPrekoZadruge: boolean = false;
+  pp: boolean = false;
 
   dodatnoOpt: boolean = false;
   pripravnost: boolean = false;
@@ -45,10 +45,12 @@ export class Employee {
     ime: string,
     prezime: string,
     kadrovskiBroj: string,
-    stalni: boolean,
+
     odredjeno: boolean,
     neodredjeno: boolean,
     zadruga: boolean,
+    pp: boolean,
+
     dodatnoOpt: boolean,
     pripravnost: boolean,
     prekovremeni: boolean,
@@ -58,15 +60,15 @@ export class Employee {
     this.prezimeZaposlenog = prezime;
     this.kadrovskiBroj = kadrovskiBroj;
 
+    this.zaposleniNaOdredjeno = odredjeno;
+    this.zaposleniNaNeodredjeno = neodredjeno;
+    this.zaposleniPrekoZadruge = zadruga;
+    this.pp = pp;
+
     this.dodatnoOpt = dodatnoOpt;
     this.pripravnost = pripravnost;
     this.prekovremeni = prekovremeni;
     this.prevoz = prevoz;
-
-    this.stalniZaposleni = stalni;
-    this.zaposleniNaOdredjeno = odredjeno;
-    this.zaposleniNaNeodredjeno = neodredjeno;
-    this.zaposleniPrekoZadruge = zadruga;
 
     this.fondSati = calculateWorkingHours();
 

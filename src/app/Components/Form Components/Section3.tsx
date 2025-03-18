@@ -1,3 +1,4 @@
+import { Groups } from "../Classes/Groups";
 import Ekspozitura from "./Subsections/Ekspozitura";
 import Filijala from "./Subsections/Filijala";
 import Nbs from "./Subsections/Nbs";
@@ -12,7 +13,10 @@ type Section3Props = {
   komisijaZaNbs: boolean;
   nepredvidjeni: boolean;
   vozac: boolean;
+
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
+
 export default function Section3({
   pripravnost,
   sakljucarFilijala,
@@ -21,6 +25,7 @@ export default function Section3({
   komisijaZaNbs,
   nepredvidjeni,
   vozac,
+  setGroups,
 }: Section3Props) {
   return (
     <div className="flex flex-col justify-between">

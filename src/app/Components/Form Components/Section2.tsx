@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Section3 from "./Section3";
+import { Groups } from "../Classes/Groups";
 
 type Section2Props = {
   dodatnoOpt: boolean;
@@ -12,9 +13,12 @@ type Section2Props = {
   setPrekovremeni: React.Dispatch<React.SetStateAction<boolean>>;
   prevoz: boolean;
   setPrevoz: React.Dispatch<React.SetStateAction<boolean>>;
+
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
 export default function Section2({
+  setGroups,
   dodatnoOpt,
   setDodatnoOpt,
   pripravnost,
@@ -192,6 +196,7 @@ export default function Section2({
         komisijaZaNbs={komisijaZaNbs}
         nepredvidjeni={nepredvidjeni}
         vozac={vozac}
+        setGroups={setGroups}
       />
     </div>
   );

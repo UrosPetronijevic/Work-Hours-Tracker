@@ -14,15 +14,19 @@ import Table8 from "./Table8";
 import TableNav from "./TableNav";
 import Formpage from "../Form Components/Formpage";
 import Table9 from "./Table9";
+import { Groups, Sakljucari } from "../Classes/Groups";
 
 interface Data {
   [key: string]: {
     employees: Employee[];
+    groups: Groups;
   };
 }
 
 export default function page() {
   const [employees, setEmployees] = useState<Employee[]>([]);
+  const [groups, setGroups] = useState<Groups>(new Groups());
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null); // Error state
   const [activeTable, setActiveTable] = useState<string | null>(null);
@@ -30,34 +34,40 @@ export default function page() {
   const [form, setForm] = useState<boolean>(true);
 
   useEffect(() => {
-    // Fetch data from your API route
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/server"); // The route defined in route.ts
+        const response = await fetch("/api/server"); // Fetch from API
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const result: Data = await response.json(); // Type the result as `Data`
 
-        console.log(`data is (${thisMonth}, ${thisYear})`, result);
+        console.log(
+          `result (${thisMonth}, ${thisYear}) when paresed json ofc is`,
+          result
+        );
 
-        // After data is set, retrieve the employees for the current month
         const currentMonthKey = `0${thisMonth}.${thisYear}`;
-        const currentMonthData = result[currentMonthKey]?.employees || [];
-        setEmployees(currentMonthData); // Set employees for the current month
+        const currentMonthEmployees = result[currentMonthKey]?.employees || [];
+        const currentMonthGroups = result[currentMonthKey]?.groups
+          ? { ...new Groups(), ...result[currentMonthKey].groups } // Merge with default
+          : new Groups();
+
+        setEmployees(currentMonthEmployees); // Set employees for the current month
+        setGroups(currentMonthGroups); // Set groups for the current month
       } catch (err) {
         if (err instanceof Error) {
-          setError(err.message); // Set error message if error is caught
+          setError(err.message);
         } else {
           setError("An unexpected error occurred");
         }
       } finally {
-        setLoading(false); // Set loading state to false after fetch completes
+        setLoading(false);
       }
     };
 
-    fetchData(); // Call fetchData function
-  }, [thisMonth, thisYear]); // Run the effect when `thisMonth` or `thisYear` changes
+    fetchData();
+  }, [thisMonth, thisYear]);
 
   const renderTable = () => {
     switch (activeTable) {
@@ -100,7 +110,7 @@ export default function page() {
         Dodaj novog clana
       </button>
 
-      {form && <Formpage setEmployees={setEmployees} />}
+      {form && <Formpage setEmployees={setEmployees} setGroups={setGroups} />}
     </div>
   );
 }

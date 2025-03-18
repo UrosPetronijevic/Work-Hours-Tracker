@@ -1,5 +1,5 @@
 {
-  "02.2025": {
+  "03.2025": {
     "employees": [
       {
         "bolovanje30": 0,
@@ -62,72 +62,57 @@
         "zaposleniNaNeodredjeno": false,
         "zaposleniNaOdredjeno": false,
         "zaposleniPrekoZadruge": false
+      }
+    ],
+    "groups": {
+      "filijala": {
+        "sakljucariGornje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        },
+        "sakljucariDonje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        }
       },
-      {
-        "bolovanje30": 0,
-        "bolovanje30Arr": [],
-        "bolovanje100": 0,
-        "bolovanje100Arr": [],
-        "bolovanjeNaTertFonda": 0,
-        "bolovanjeNaTertFondaArr": [],
-        "dodatnoOpt": false,
-        "fondSati": 0,
-        "godisnjiOdmor": 0,
-        "godisnjiOdmorArr": [],
-        "imeZaposlenog": "Zoka",
-        "kadrovskiBroj": "124",
-        "placenoOdsustvo": 0,
-        "placenoOdsustvoArr": [],
-        "porodiljskoOdsustvo": 0,
-        "prekovremeni": false,
-        "prevoz": false,
-        "prezimeZaposlenog": "Poka",
-        "pripravnost": false,
-        "pripravnostSati": [],
-        "pripravnostTotal": 0,
-        "redovanRad": 0,
-        "selectedDaysArr": [],
-        "slavaArr": [],
-        "stalniZaposleni": false,
-        "zaposleniNaNeodredjeno": false,
-        "zaposleniNaOdredjeno": false,
-        "zaposleniPrekoZadruge": false
+      "ekspozitura": {
+        "sakljucariGornje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        },
+        "sakljucariDonje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        }
+      },
+      "nbs": {
+        "predsednik": null,
+        "zamenikPredsednika": null,
+        "clanKomisije2": null,
+        "zamenikClana2": null,
+        "clanKomisije3": null,
+        "zamenikClana3": null
+      },
+      "prijem": {
+        "predsednik": null,
+        "zamenikPredsednika": null,
+        "clanKomisije2": null,
+        "zamenikClana2": null,
+        "clanKomisije3": null,
+        "zamenikClana3": null
+      },
+      "vozaci": {
+        "vozac": null,
+        "zamenaVozaca": null
       }
-    ]
-  },
-
-  "03.2025": {
-    "employees": [
-      {
-        "bolovanje30": 0,
-        "bolovanje30Arr": [],
-        "bolovanje100": 0,
-        "bolovanje100Arr": [],
-        "bolovanjeNaTertFonda": 0,
-        "bolovanjeNaTertFondaArr": [],
-        "dodatnoOpt": false,
-        "fondSati": 0,
-        "godisnjiOdmor": 0,
-        "godisnjiOdmorArr": [],
-        "imeZaposlenog": "Ola",
-        "kadrovskiBroj": "133",
-        "placenoOdsustvo": 0,
-        "placenoOdsustvoArr": [],
-        "porodiljskoOdsustvo": 0,
-        "prekovremeni": false,
-        "prevoz": false,
-        "prezimeZaposlenog": "Bola",
-        "pripravnost": false,
-        "pripravnostSati": [],
-        "pripravnostTotal": 0,
-        "redovanRad": 0,
-        "selectedDaysArr": [],
-        "slavaArr": [],
-        "stalniZaposleni": false,
-        "zaposleniNaNeodredjeno": false,
-        "zaposleniNaOdredjeno": false,
-        "zaposleniPrekoZadruge": false
-      }
-    ]
+    }
   }
 }
