@@ -74,7 +74,7 @@ export default function Prijem({ pripravnost }: PrijemProps) {
             </li>
 
             <li onClick={() => handlePosition("zamenikPredsednika")}>
-              <label className="flex gap-4 items-center text-md">
+              <label className="flex gap-4 items-center text-md border-b border-slate-400 pb-4">
                 <input
                   type="checkbox"
                   disabled={!pripravnost}
@@ -100,7 +100,7 @@ export default function Prijem({ pripravnost }: PrijemProps) {
             </li>
 
             <li onClick={() => handlePosition("zamenikClana2")}>
-              <label className="flex gap-4 items-center text-md">
+              <label className="flex gap-4 items-center text-md border-b border-slate-400 pb-4">
                 <input
                   type="checkbox"
                   disabled={!pripravnost}

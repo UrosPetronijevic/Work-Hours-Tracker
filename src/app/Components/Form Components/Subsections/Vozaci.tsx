@@ -36,7 +36,6 @@ export default function Vozaci({ pripravnost }: VozaciProps) {
 
       <div>
         <div className="flex flex-col gap-4 justify-center">
-          <h3 className="text-lg">Komisija :</h3>
           <ul className="flex flex-col gap-4">
             <li onClick={() => handlePosition("Vozac")}>
               <label className="flex gap-4 items-center text-md">

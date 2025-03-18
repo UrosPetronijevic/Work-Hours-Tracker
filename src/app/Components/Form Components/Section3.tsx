@@ -2,6 +2,7 @@ import { Groups } from "../Classes/Groups";
 import Ekspozitura from "./Subsections/Ekspozitura";
 import Filijala from "./Subsections/Filijala";
 import Nbs from "./Subsections/Nbs";
+import Nepredvidjeni from "./Subsections/Nepredvidjeni";
 import Prijem from "./Subsections/Prijem";
 import Vozaci from "./Subsections/Vozaci";
 
@@ -37,15 +38,7 @@ export default function Section3({
 
       {komisijaZaNbs && <Nbs pripravnost={pripravnost} />}
 
-      {nepredvidjeni && (
-        <div
-          className={`flex flex-col select-none ${
-            pripravnost ? "text-slate-700 enabled" : "text-slate-400 disabled"
-          }`}
-        >
-          <h1 className="self-center text-3xl">nepredvidjeni</h1>
-        </div>
-      )}
+      {nepredvidjeni && <Nepredvidjeni pripravnost={pripravnost} />}
 
       {vozac && <Vozaci pripravnost={pripravnost} />}
 
