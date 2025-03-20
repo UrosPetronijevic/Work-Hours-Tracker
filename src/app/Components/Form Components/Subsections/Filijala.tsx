@@ -1,52 +1,94 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Groups } from "../../Classes/Groups";
 
 type FilijalaProps = {
   pripravnost: boolean;
+  kadrovskiBroj: string;
+
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
-export default function Filijala({ pripravnost }: FilijalaProps) {
-  const [sakljucarGornje, setSakljucarGornje] = useState(false);
-  const [zamenik1Gornje, setZamenik1Gornje] = useState(false);
-  const [zamenik2Gornje, setZamenik2Gornje] = useState(false);
+export default function Filijala({
+  pripravnost,
+  setGroups,
+  kadrovskiBroj,
+}: FilijalaProps) {
+  const [sakljucarGornje, setSakljucarGornje] = useState<string | null>(null);
+  const [zamenik1Gornje, setZamenik1Gornje] = useState<string | null>(null);
+  const [zamenik2Gornje, setZamenik2Gornje] = useState<string | null>(null);
 
-  const [sakljucarDonje, setSakljucarDonje] = useState(false);
-  const [zamenik1Donje, setZamenik1Donje] = useState(false);
-  const [zamenik2Donje, setZamenik2Donje] = useState(false);
-  //////////////////////////////////////////////////////////////////////////////////
+  const [sakljucarDonje, setSakljucarDonje] = useState<string | null>(null);
+  const [zamenik1Donje, setZamenik1Donje] = useState<string | null>(null);
+  const [zamenik2Donje, setZamenik2Donje] = useState<string | null>(null);
 
+  // 🔹 Function to update local state only
   const handlePosition = (selectedOption: string) => {
-    setSakljucarGornje(false);
-    setZamenik1Gornje(false);
-    setZamenik2Gornje(false);
-    setSakljucarDonje(false);
-    setZamenik1Donje(false);
-    setZamenik2Donje(false);
-
     switch (selectedOption) {
       case "sakljucarGornje":
-        setSakljucarGornje(true);
+        setSakljucarGornje(kadrovskiBroj);
         break;
       case "zamenik1Gornje":
-        setZamenik1Gornje(true);
+        setZamenik1Gornje(kadrovskiBroj);
         break;
       case "zamenik2Gornje":
-        setZamenik2Gornje(true);
+        setZamenik2Gornje(kadrovskiBroj);
         break;
       case "sakljucarDonje":
-        setSakljucarDonje(true);
+        setSakljucarDonje(kadrovskiBroj);
         break;
       case "zamenik1Donje":
-        setZamenik1Donje(true);
+        setZamenik1Donje(kadrovskiBroj);
         break;
       case "zamenik2Donje":
-        setZamenik2Donje(true);
+        setZamenik2Donje(kadrovskiBroj);
         break;
       default:
         break;
     }
   };
+
+  // 🔹 Sync local state to `setGroups` safely after updates
+  useEffect(() => {
+    setGroups((prevGroups) => {
+      const updatedGroups = { ...prevGroups };
+
+      // Remove `kadrovskiBroj` from all positions where it was previously set
+      const removeKadrovskiBroj = (obj: any) => {
+        Object.keys(obj).forEach((key) => {
+          if (obj[key] === kadrovskiBroj) obj[key] = null;
+        });
+      };
+
+      removeKadrovskiBroj(updatedGroups.filijala.sakljucariGornje);
+      removeKadrovskiBroj(updatedGroups.filijala.sakljucariDonje);
+
+      // Assign new values (only update the relevant one)
+      if (sakljucarGornje === kadrovskiBroj)
+        updatedGroups.filijala.sakljucariGornje.sakljucar = sakljucarGornje;
+      if (zamenik1Gornje === kadrovskiBroj)
+        updatedGroups.filijala.sakljucariGornje.zamenik1 = zamenik1Gornje;
+      if (zamenik2Gornje === kadrovskiBroj)
+        updatedGroups.filijala.sakljucariGornje.zamenik2 = zamenik2Gornje;
+
+      if (sakljucarDonje === kadrovskiBroj)
+        updatedGroups.filijala.sakljucariDonje.sakljucar = sakljucarDonje;
+      if (zamenik1Donje === kadrovskiBroj)
+        updatedGroups.filijala.sakljucariDonje.zamenik1 = zamenik1Donje;
+      if (zamenik2Donje === kadrovskiBroj)
+        updatedGroups.filijala.sakljucariDonje.zamenik2 = zamenik2Donje;
+
+      return updatedGroups;
+    });
+  }, [
+    sakljucarGornje,
+    zamenik1Gornje,
+    zamenik2Gornje,
+    sakljucarDonje,
+    zamenik1Donje,
+    zamenik2Donje,
+  ]);
   //////////////////////////////////////////////////////////////////////////////////
 
   const handleAsign = () => {};

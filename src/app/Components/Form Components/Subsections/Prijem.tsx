@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Groups } from "../../Classes/Groups";
 
 type PrijemProps = {
   pripravnost: boolean;
+
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
-export default function Prijem({ pripravnost }: PrijemProps) {
+export default function Prijem({ pripravnost, setGroups }: PrijemProps) {
   const [predsednikKomisije, setPredsednikKomisije] = useState<boolean>(false);
   const [zamenikPredsednika, setZamenikPredsednika] = useState<boolean>(false);
 

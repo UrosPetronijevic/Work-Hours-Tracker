@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
+import { thisMonth, thisYear } from "@/app/Components/Static Data/Dates";
 
 // Define the path to your database.json file
 const databasePath = path.join(
@@ -29,15 +30,142 @@ async function writeDatabase(data: any) {
   }
 }
 
-// GET: Fetch data from the database
+// // GET: Fetch data from the database
+// export async function GET() {
+//   try {
+//     const jsonData = await readDatabase();
+//     return NextResponse.json(jsonData);
+//   } catch (error) {
+//     return NextResponse.json({ error: "Failed to load data" }, { status: 500 });
+//   }
+// }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Function to get current month key
+const getCurrentMonthKey = () => {
+  return `${thisMonth.toString().padStart(2, "0")}.${thisYear}`; // Format: "04.2025"
+};
+
+// Function to get the previous month key
+const getPreviousMonthKey = () => {
+  let month = thisMonth - 1;
+  let year = thisYear;
+
+  if (month === 0) {
+    month = 12; // December of the previous year
+    year -= 1;
+  }
+
+  return `${month.toString().padStart(2, "0")}.${year}`;
+};
+
 export async function GET() {
   try {
-    const jsonData = await readDatabase();
-    return NextResponse.json(jsonData);
+    const database = await readDatabase();
+    const currentMonthKey = getCurrentMonthKey();
+    const previousMonthKey = getPreviousMonthKey();
+
+    // If the month doesn't exist, copy data from the last month
+    if (!database[currentMonthKey]) {
+      if (database[previousMonthKey]) {
+        // Copy employees and reset specific arrays
+        const previousEmployees = database[previousMonthKey].employees.map(
+          (employee: any) => ({
+            ...employee,
+            godisnjiOdmorArr: [],
+            placenoOdsustvoArr: [],
+            bolovanje30Arr: [],
+            bolovanje100Arr: [],
+            bolovanjeNaTertFondaArr: [],
+            slavaArr: [],
+            selectedDaysArr: [],
+          })
+        );
+
+        // Copy groups as is
+        const previousGroups = database[previousMonthKey].groups;
+
+        // Create new entry with copied employees and groups
+        database[currentMonthKey] = {
+          employees: previousEmployees,
+          groups: previousGroups,
+        };
+      } else {
+        // If no previous month exists, create an empty dataset
+        database[currentMonthKey] = {
+          employees: [],
+          groups: {
+            filijala: {
+              sakljucariGornje: {
+                sakljucar: null,
+                zamenik1: null,
+                zamenik2: null,
+                nepredvidjeni: null,
+              },
+              sakljucariDonje: {
+                sakljucar: null,
+                zamenik1: null,
+                zamenik2: null,
+                nepredvidjeni: null,
+              },
+            },
+            ekspozitura: {
+              sakljucariGornje: {
+                sakljucar: null,
+                zamenik1: null,
+                zamenik2: null,
+                nepredvidjeni: null,
+              },
+              sakljucariDonje: {
+                sakljucar: null,
+                zamenik1: null,
+                zamenik2: null,
+                nepredvidjeni: null,
+              },
+            },
+            nbs: {
+              predsednik: null,
+              zamenikPredsednika: null,
+              clanKomisije2: null,
+              zamenikClana2: null,
+              clanKomisije3: null,
+              zamenikClana3: null,
+            },
+            prijem: {
+              predsednik: null,
+              zamenikPredsednika: null,
+              clanKomisije2: null,
+              zamenikClana2: null,
+              clanKomisije3: null,
+              zamenikClana3: null,
+            },
+            vozaci: { vozac: null, zamenaVozaca: null },
+          },
+        };
+      }
+
+      // Save the updated database
+      writeDatabase(database);
+    }
+
+    return NextResponse.json(database[currentMonthKey]);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to load data" }, { status: 500 });
+    console.error("Error processing GET request:", error);
+    return NextResponse.json(
+      { error: "Failed to process request" },
+      { status: 500 }
+    );
   }
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // POST: Add a new employee to the database
 export async function POST(req: Request) {
@@ -81,3 +209,7 @@ export async function POST(req: Request) {
     );
   }
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -14,6 +14,8 @@ type Section2Props = {
   prevoz: boolean;
   setPrevoz: React.Dispatch<React.SetStateAction<boolean>>;
 
+  kadrovskiBroj: string;
+
   setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
@@ -27,6 +29,7 @@ export default function Section2({
   setPrekovremeni,
   prevoz,
   setPrevoz,
+  kadrovskiBroj,
 }: Section2Props) {
   const [sakljucarFilijala, setSakljucarFilijala] = useState(true);
   const [sakljucarEkspozitura, setSakljucarEkspozitura] = useState(false);
@@ -197,6 +200,7 @@ export default function Section2({
         nepredvidjeni={nepredvidjeni}
         vozac={vozac}
         setGroups={setGroups}
+        kadrovskiBroj={kadrovskiBroj}
       />
     </div>
   );

@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Groups } from "../../Classes/Groups";
 
 type NbsProps = {
   pripravnost: boolean;
+
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
-export default function Nbs({ pripravnost }: NbsProps) {
+export default function Nbs({ pripravnost, setGroups }: NbsProps) {
   const [predsednikKomisije, setPredsednikKomisije] = useState<boolean>(false);
   const [zamenikPredsednika, setZamenikPredsednika] = useState<boolean>(false);
 

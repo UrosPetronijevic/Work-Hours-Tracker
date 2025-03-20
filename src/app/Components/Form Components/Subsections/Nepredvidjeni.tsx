@@ -1,12 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { Groups } from "../../Classes/Groups";
 
 type NepredvidjeniProps = {
   pripravnost: boolean;
+
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
-export default function Nepredvidjeni({ pripravnost }: NepredvidjeniProps) {
+export default function Nepredvidjeni({
+  pripravnost,
+  setGroups,
+}: NepredvidjeniProps) {
   const [nepredvidjeniGornjeFilijala, setNepredvidjeniGornjeFilijala] =
     useState<boolean>(false);
   const [nepredvidjeniDonjeFilijala, setNepredvidjeniDonjeFilijala] =
@@ -55,7 +61,7 @@ export default function Nepredvidjeni({ pripravnost }: NepredvidjeniProps) {
 
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4">
-          <h3 className="text-lg">Filijala</h3>
+          <h3 className="text-lg">Filijala :</h3>
           <ul className="flex flex-col gap-4">
             <li onClick={() => handlePosition("nepredvidjeniFilijalaGornje")}>
               <label className="flex gap-4 items-center text-md">
@@ -82,7 +88,7 @@ export default function Nepredvidjeni({ pripravnost }: NepredvidjeniProps) {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h3 className="text-lg">Ekspozitura</h3>
+          <h3 className="text-lg">Ekspozitura :</h3>
           <ul className="flex flex-col gap-4">
             <li
               onClick={() => handlePosition("nepredvidjeniEkspozituraGornje")}

@@ -14,7 +14,7 @@ import Table8 from "./Table8";
 import TableNav from "./TableNav";
 import Formpage from "../Form Components/Formpage";
 import Table9 from "./Table9";
-import { Groups, Sakljucari } from "../Classes/Groups";
+import { Groups } from "../Classes/Groups";
 
 interface Data {
   [key: string]: {
@@ -31,31 +31,45 @@ export default function page() {
   const [error, setError] = useState<string | null>(null); // Error state
   const [activeTable, setActiveTable] = useState<string | null>(null);
 
-  const [form, setForm] = useState<boolean>(true);
+  const [form, setForm] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+      setError(null); // Reset error state before fetching
+
       try {
         const response = await fetch("/api/server"); // Fetch from API
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
+
         const result: Data = await response.json(); // Type the result as `Data`
 
         console.log(
-          `result (${thisMonth}, ${thisYear}) when paresed json ofc is`,
+          `result (${thisMonth}, ${thisYear}) when parsed JSON is`,
           result
         );
 
         const currentMonthKey = `0${thisMonth}.${thisYear}`;
-        const currentMonthEmployees = result[currentMonthKey]?.employees || [];
-        const currentMonthGroups = result[currentMonthKey]?.groups
-          ? { ...new Groups(), ...result[currentMonthKey].groups } // Merge with default
-          : new Groups();
 
-        setEmployees(currentMonthEmployees); // Set employees for the current month
-        setGroups(currentMonthGroups); // Set groups for the current month
+        // Ensure `employees` is an array, otherwise show an error
+        const currentMonthEmployees: Employee[] = Array.isArray(
+          result.employees
+        )
+          ? result.employees
+          : (setError("Invalid employees data, using empty list."), []);
+
+        // Ensure `groups` is an object, otherwise show an error
+        const currentMonthGroups: Groups =
+          result.groups && typeof result.groups === "object"
+            ? { ...new Groups(), ...result.groups }
+            : (setError("Invalid groups data, using default."), new Groups());
+
+        setEmployees(currentMonthEmployees);
+        setGroups(currentMonthGroups);
       } catch (err) {
+        console.error("Error fetching data:", err);
         if (err instanceof Error) {
           setError(err.message);
         } else {
@@ -94,8 +108,23 @@ export default function page() {
     }
   };
 
+  console.log(`employyes ${employees} and groups ${groups}`);
+
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+
+  {
+    error && (
+      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded relative">
+        <span>{error}</span>
+        <button
+          className="absolute top-0 right-0 px-3 py-1"
+          onClick={() => setError(null)}
+        >
+          ❌
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-full h-full px-4 flex flex-col">

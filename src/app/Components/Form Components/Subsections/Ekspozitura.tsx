@@ -1,12 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { Groups } from "../../Classes/Groups";
 
 type EkspozituraProps = {
   pripravnost: boolean;
+
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
-export default function Ekspozitura({ pripravnost }: EkspozituraProps) {
+export default function Ekspozitura({
+  pripravnost,
+  setGroups,
+}: EkspozituraProps) {
   const [sakljucarGornje, setSakljucarGornje] = useState(false);
   const [zamenik1Gornje, setZamenik1Gornje] = useState(false);
   const [zamenik2Gornje, setZamenik2Gornje] = useState(false);

@@ -10,7 +10,7 @@ export const datumZavrsetka = new Date(thisYear, thisMonth + 1, 0);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Calculate the number of days in the current month
-export const daysInMonth = new Date(thisYear, thisMonth + 1, 0).getDate();
+export const daysInMonth = new Date(thisYear, thisMonth, 0).getDate();
 
 // Get the weekday of the first day of the month (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
 export const firstDayOfMonth = new Date(thisYear, thisMonth, 1).getDay();

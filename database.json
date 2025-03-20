@@ -1,0 +1,55 @@
+{
+  "03.2025": {
+    "employees": [],
+    "groups": {
+      "filijala": {
+        "sakljucariGornje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        },
+        "sakljucariDonje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        }
+      },
+      "ekspozitura": {
+        "sakljucariGornje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        },
+        "sakljucariDonje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        }
+      },
+      "nbs": {
+        "predsednik": null,
+        "zamenikPredsednika": null,
+        "clanKomisije2": null,
+        "zamenikClana2": null,
+        "clanKomisije3": null,
+        "zamenikClana3": null
+      },
+      "prijem": {
+        "predsednik": null,
+        "zamenikPredsednika": null,
+        "clanKomisije2": null,
+        "zamenikClana2": null,
+        "clanKomisije3": null,
+        "zamenikClana3": null
+      },
+      "vozaci": {
+        "vozac": null,
+        "zamenaVozaca": null
+      }
+    }
+  }
+}

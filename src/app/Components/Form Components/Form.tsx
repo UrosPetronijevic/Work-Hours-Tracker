@@ -64,6 +64,7 @@ export default function Form({ setEmployees, setGroups }: FormProps) {
         prevoz={prevoz}
         setPrevoz={setPrevoz}
         setGroups={setGroups}
+        kadrovskiBroj={kadrovskiBroj}
       />
     </div>
   );

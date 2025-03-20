@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Groups } from "../../Classes/Groups";
 
 type VozaciProps = {
   pripravnost: boolean;
+
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };
 
-export default function Vozaci({ pripravnost }: VozaciProps) {
+export default function Vozaci({ pripravnost, setGroups }: VozaciProps) {
   const [vozac, setVozac] = useState<boolean>(false);
   const [zamenikPredsednika, setZamenikPredsednika] = useState<boolean>(false);
 

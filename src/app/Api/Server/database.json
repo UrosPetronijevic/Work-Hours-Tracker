@@ -114,5 +114,121 @@
         "zamenaVozaca": null
       }
     }
+  },
+  "04.2025": {
+    "employees": [
+      {
+        "bolovanje30": 0,
+        "bolovanje30Arr": [],
+        "bolovanje100": 0,
+        "bolovanje100Arr": [],
+        "bolovanjeNaTertFonda": 0,
+        "bolovanjeNaTertFondaArr": [],
+        "dodatnoOpt": false,
+        "fondSati": 168,
+        "godisnjiOdmor": 0,
+        "godisnjiOdmorArr": [],
+        "imeZaposlenog": "uki",
+        "kadrovskiBroj": "123",
+        "placenoOdsustvo": 0,
+        "placenoOdsustvoArr": [],
+        "porodiljskoOdsustvo": 0,
+        "prekovremeni": false,
+        "prevoz": false,
+        "prezimeZaposlenog": "puki",
+        "pripravnost": true,
+        "pripravnostSatiArr": [
+          null,
+          null,
+          16,
+          0,
+          16,
+          16,
+          16,
+          null,
+          null,
+          16,
+          16,
+          7.5,
+          8.5,
+          16,
+          null,
+          null,
+          16,
+          16,
+          16,
+          16,
+          16,
+          null,
+          null,
+          16,
+          16,
+          16,
+          16,
+          16,
+          null,
+          null,
+          16
+        ],
+        "pripravnostTotal": 0,
+        "redovanRad": 0,
+        "selectedDaysArr": [],
+        "slavaArr": [],
+        "stalniZaposleni": true,
+        "zaposleniNaNeodredjeno": false,
+        "zaposleniNaOdredjeno": false,
+        "zaposleniPrekoZadruge": false
+      }
+    ],
+    "groups": {
+      "filijala": {
+        "sakljucariGornje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        },
+        "sakljucariDonje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        }
+      },
+      "ekspozitura": {
+        "sakljucariGornje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        },
+        "sakljucariDonje": {
+          "sakljucar": null,
+          "zamenik1": null,
+          "zamenik2": null,
+          "nepredvidjeni": null
+        }
+      },
+      "nbs": {
+        "predsednik": null,
+        "zamenikPredsednika": null,
+        "clanKomisije2": null,
+        "zamenikClana2": null,
+        "clanKomisije3": null,
+        "zamenikClana3": null
+      },
+      "prijem": {
+        "predsednik": null,
+        "zamenikPredsednika": null,
+        "clanKomisije2": null,
+        "zamenikClana2": null,
+        "clanKomisije3": null,
+        "zamenikClana3": null
+      },
+      "vozaci": {
+        "vozac": null,
+        "zamenaVozaca": null
+      }
+    }
   }
 }
