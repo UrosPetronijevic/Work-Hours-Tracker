@@ -1,3 +1,6 @@
+"use clent";
+
+import { useState } from "react";
 import { Groups } from "../Classes/Groups";
 import Ekspozitura from "./Subsections/Ekspozitura";
 import Filijala from "./Subsections/Filijala";
@@ -30,6 +33,25 @@ export default function Section3({
   setGroups,
   kadrovskiBroj,
 }: Section3Props) {
+  const [sakljucarGornjeF, setSakljucarGornjeF] = useState(false);
+  const [zamenik1GornjeF, setZamenik1GornjeF] = useState(false);
+  const [zamenik2GornjeF, setZamenik2GornjeF] = useState(false);
+
+  const [sakljucarDonjeF, setSakljucarDonjeF] = useState(false);
+  const [zamenik1DonjeF, setZamenik1DonjeF] = useState(false);
+  const [zamenik2DonjeF, setZamenik2DonjeF] = useState(false);
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [sakljucarGornjeE, setSakljucarGornjeE] = useState(false);
+  const [zamenik1GornjeE, setZamenik1GornjeE] = useState(false);
+  const [zamenik2GornjeE, setZamenik2GornjeE] = useState(false);
+
+  const [sakljucarDonjeE, setSakljucarDonjeE] = useState(false);
+  const [zamenik1DonjeE, setZamenik1DonjeE] = useState(false);
+  const [zamenik2DonjeE, setZamenik2DonjeE] = useState(false);
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <div className="flex flex-col justify-between">
       {sakljucarFilijala && (
@@ -37,6 +59,26 @@ export default function Section3({
           pripravnost={pripravnost}
           setGroups={setGroups}
           kadrovskiBroj={kadrovskiBroj}
+          //////////////////////////////////////////////////////////
+
+          sakljucarGornjeF={sakljucarGornjeF}
+          setSakljucarGornjeF={setSakljucarGornjeF}
+          /////////
+          zamenik1GornjeF={zamenik1GornjeF}
+          setZamenik1GornjeF={setZamenik1GornjeF}
+          /////////
+          zamenik2GornjeF={zamenik2GornjeF}
+          setZamenik2GornjeF={setZamenik2GornjeF}
+          //////////////////////////////////////////////////////////
+
+          sakljucarDonjeF={sakljucarDonjeF}
+          setSakljucarDonjeF={setSakljucarDonjeF}
+          /////////
+          zamenik1DonjeF={zamenik1DonjeF}
+          setZamenik1DonjeF={setZamenik1DonjeF}
+          /////////
+          zamenik2DonjeF={zamenik2DonjeF}
+          setZamenik2DonjeF={setZamenik2DonjeF}
         />
       )}
 
@@ -45,6 +87,26 @@ export default function Section3({
           pripravnost={pripravnost}
           setGroups={setGroups}
           kadrovskiBroj={kadrovskiBroj}
+          //////////////////////////////////////////////////////////
+
+          sakljucarGornjeE={sakljucarGornjeE}
+          setSakljucarGornjeE={setSakljucarGornjeE}
+          /////////
+          zamenik1GornjeE={zamenik1GornjeE}
+          setZamenik1GornjeE={setZamenik1GornjeE}
+          /////////
+          zamenik2GornjeE={zamenik2GornjeE}
+          setZamenik2GornjeE={setZamenik2GornjeE}
+          //////////////////////////////////////////////////////////
+
+          sakljucarDonjeE={sakljucarDonjeE}
+          setSakljucarDonjeE={setSakljucarDonjeE}
+          /////////
+          zamenik1DonjeE={zamenik1DonjeE}
+          setZamenik1DonjeE={setZamenik1DonjeE}
+          /////////
+          zamenik2DonjeE={zamenik2DonjeE}
+          setZamenik2DonjeE={setZamenik2DonjeE}
         />
       )}
 

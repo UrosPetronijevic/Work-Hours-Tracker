@@ -1,61 +1,125 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Groups } from "../../Classes/Groups";
 
 type EkspozituraProps = {
   pripravnost: boolean;
+  kadrovskiBroj: string;
 
   setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+
+  sakljucarGornjeE: boolean;
+  setSakljucarGornjeE: React.Dispatch<React.SetStateAction<boolean>>;
+
+  zamenik1GornjeE: boolean;
+  setZamenik1GornjeE: React.Dispatch<React.SetStateAction<boolean>>;
+
+  zamenik2GornjeE: boolean;
+  setZamenik2GornjeE: React.Dispatch<React.SetStateAction<boolean>>;
+
+  sakljucarDonjeE: boolean;
+  setSakljucarDonjeE: React.Dispatch<React.SetStateAction<boolean>>;
+
+  zamenik1DonjeE: boolean;
+  setZamenik1DonjeE: React.Dispatch<React.SetStateAction<boolean>>;
+
+  zamenik2DonjeE: boolean;
+  setZamenik2DonjeE: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function Ekspozitura({
   pripravnost,
+  kadrovskiBroj,
   setGroups,
-}: EkspozituraProps) {
-  const [sakljucarGornje, setSakljucarGornje] = useState(false);
-  const [zamenik1Gornje, setZamenik1Gornje] = useState(false);
-  const [zamenik2Gornje, setZamenik2Gornje] = useState(false);
 
-  const [sakljucarDonje, setSakljucarDonje] = useState(false);
-  const [zamenik1Donje, setZamenik1Donje] = useState(false);
-  const [zamenik2Donje, setZamenik2Donje] = useState(false);
+  sakljucarGornjeE,
+  setSakljucarGornjeE,
+
+  zamenik1GornjeE,
+  setZamenik1GornjeE,
+
+  zamenik2GornjeE,
+  setZamenik2GornjeE,
+
+  sakljucarDonjeE,
+  setSakljucarDonjeE,
+
+  zamenik1DonjeE,
+  setZamenik1DonjeE,
+
+  zamenik2DonjeE,
+  setZamenik2DonjeE,
+}: EkspozituraProps) {
   //////////////////////////////////////////////////////////////////////////////////
 
+  // 🔹 Function to update local state only
   const handlePosition = (selectedOption: string) => {
-    setSakljucarGornje(false);
-    setZamenik1Gornje(false);
-    setZamenik2Gornje(false);
-    setSakljucarDonje(false);
-    setZamenik1Donje(false);
-    setZamenik2Donje(false);
-
     switch (selectedOption) {
       case "sakljucarGornje":
-        setSakljucarGornje(true);
+        setSakljucarGornjeE((prev) => !prev);
         break;
       case "zamenik1Gornje":
-        setZamenik1Gornje(true);
+        setZamenik1GornjeE((prev) => !prev);
         break;
       case "zamenik2Gornje":
-        setZamenik2Gornje(true);
+        setZamenik2GornjeE((prev) => !prev);
         break;
       case "sakljucarDonje":
-        setSakljucarDonje(true);
+        setSakljucarDonjeE((prev) => !prev);
         break;
       case "zamenik1Donje":
-        setZamenik1Donje(true);
+        setZamenik1DonjeE((prev) => !prev);
         break;
       case "zamenik2Donje":
-        setZamenik2Donje(true);
+        setZamenik2DonjeE((prev) => !prev);
         break;
       default:
         break;
     }
   };
+
   //////////////////////////////////////////////////////////////////////////////////
 
-  const handleAsign = () => {};
+  // 🔹 Sync local state to `setGroups` safely after updates
+  useEffect(() => {
+    setGroups((prevGroups) => {
+      const updatedGroups = { ...prevGroups };
+
+      console.log("Updated Groups:", prevGroups);
+
+      // Assign new values (only update the relevant one)
+      updatedGroups.ekspozitura.sakljucariGornje.sakljucar = sakljucarGornjeE
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.ekspozitura.sakljucariGornje.zamenik1 = zamenik1GornjeE
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.ekspozitura.sakljucariGornje.zamenik2 = zamenik2GornjeE
+        ? kadrovskiBroj
+        : null;
+
+      updatedGroups.ekspozitura.sakljucariDonje.sakljucar = sakljucarDonjeE
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.ekspozitura.sakljucariDonje.zamenik1 = zamenik1DonjeE
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.ekspozitura.sakljucariDonje.zamenik2 = zamenik2DonjeE
+        ? kadrovskiBroj
+        : null;
+
+      return updatedGroups;
+    });
+  }, [
+    sakljucarGornjeE,
+    zamenik1GornjeE,
+    zamenik2GornjeE,
+    sakljucarDonjeE,
+    zamenik1DonjeE,
+    zamenik2DonjeE,
+  ]);
+  //////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div
@@ -77,6 +141,8 @@ export default function Ekspozitura({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={sakljucarGornjeE}
+                  readOnly
                 />
                 <span>Sakljucar</span>
               </label>
@@ -88,6 +154,8 @@ export default function Ekspozitura({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={zamenik1GornjeE}
+                  readOnly
                 />
                 <span>Prvi zamenik</span>
               </label>
@@ -99,6 +167,8 @@ export default function Ekspozitura({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={zamenik2GornjeE}
+                  readOnly
                 />
                 <span>Drugi zamenik</span>
               </label>
@@ -115,6 +185,8 @@ export default function Ekspozitura({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={sakljucarDonjeE}
+                  readOnly
                 />
                 <span>Sakljucar</span>
               </label>
@@ -126,6 +198,8 @@ export default function Ekspozitura({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={zamenik1DonjeE}
+                  readOnly
                 />
                 <span>Prvi zamenik</span>
               </label>
@@ -137,6 +211,8 @@ export default function Ekspozitura({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={zamenik2DonjeE}
+                  readOnly
                 />
                 <span>Drugi zamenik</span>
               </label>

@@ -5,6 +5,7 @@ import { Groups } from "../../Classes/Groups";
 
 type NepredvidjeniProps = {
   pripravnost: boolean;
+  kadrovskiBroj: string;
 
   setGroups: React.Dispatch<React.SetStateAction<Groups>>;
 };

@@ -38,6 +38,8 @@ export default function Section2({
   const [nepredvidjeni, setNepredvidjeni] = useState(false);
   const [vozac, setVozac] = useState(false);
 
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
   const handleOptionSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedOption = event.target.value; // Extract the selected value
 
