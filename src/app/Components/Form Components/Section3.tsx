@@ -52,6 +52,33 @@ export default function Section3({
   const [zamenik2DonjeE, setZamenik2DonjeE] = useState(false);
 
   ////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [predsednikKomisijeP, setPredsednikKomisijeP] =
+    useState<boolean>(false);
+  const [zamenikPredsednikaP, setZamenikPredsednikaP] =
+    useState<boolean>(false);
+
+  const [clanKomisije2P, setClanKomisije2P] = useState<boolean>(false);
+  const [zamenikClana2P, setZamenikClana2P] = useState<boolean>(false);
+
+  const [clanKomisije3P, setClanKomisije3P] = useState<boolean>(false);
+  const [zamenikClana3P, setZamenikClana3P] = useState<boolean>(false);
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [predsednikKomisijeN, setPredsednikKomisijeN] =
+    useState<boolean>(false);
+  const [zamenikPredsednikaN, setZamenikPredsednikaN] =
+    useState<boolean>(false);
+
+  const [clanKomisije2N, setClanKomisije2N] = useState<boolean>(false);
+  const [zamenikClana2N, setZamenikClana2N] = useState<boolean>(false);
+
+  const [clanKomisije3N, setClanKomisije3N] = useState<boolean>(false);
+  const [zamenikClana3N, setZamenikClana3N] = useState<boolean>(false);
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
   return (
     <div className="flex flex-col justify-between">
       {sakljucarFilijala && (
@@ -115,6 +142,30 @@ export default function Section3({
           pripravnost={pripravnost}
           setGroups={setGroups}
           kadrovskiBroj={kadrovskiBroj}
+          //////////////////////////////////////////////////////////
+
+          predsednikKomisijeP={predsednikKomisijeP}
+          setPredsednikKomisijeP={setPredsednikKomisijeP}
+          /////////
+
+          zamenikPredsednikaP={zamenikPredsednikaP}
+          setZamenikPredsednikaP={setZamenikPredsednikaP}
+          /////////
+
+          clanKomisije2P={clanKomisije2P}
+          setClanKomisije2P={setClanKomisije2P}
+          /////////
+
+          zamenikClana2P={zamenikClana2P}
+          setZamenikClana2P={setZamenikClana2P}
+          /////////
+
+          clanKomisije3P={clanKomisije3P}
+          setClanKomisije3P={setClanKomisije3P}
+          /////////
+
+          zamenikClana3P={zamenikClana3P}
+          setZamenikClana3P={setZamenikClana3P}
         />
       )}
 
@@ -123,6 +174,20 @@ export default function Section3({
           pripravnost={pripravnost}
           setGroups={setGroups}
           kadrovskiBroj={kadrovskiBroj}
+          // Pass all states
+          predsednikKomisijeN={predsednikKomisijeN}
+          zamenikPredsednikaN={zamenikPredsednikaN}
+          clanKomisije2N={clanKomisije2N}
+          zamenikClana2N={zamenikClana2N}
+          clanKomisije3N={clanKomisije3N}
+          zamenikClana3N={zamenikClana3N}
+          // Pass setter functions
+          setPredsednikKomisijeN={setPredsednikKomisijeN}
+          setZamenikPredsednikaN={setZamenikPredsednikaN}
+          setClanKomisije2N={setClanKomisije2N}
+          setZamenikClana2N={setZamenikClana2N}
+          setClanKomisije3N={setClanKomisije3N}
+          setZamenikClana3N={setZamenikClana3N}
         />
       )}
 

@@ -54,6 +54,13 @@ export default function Filijala({
 
   // 🔹 Function to update local state only
   const handlePosition = (selectedOption: string) => {
+    setSakljucarGornjeF(false);
+    setZamenik1GornjeF(false);
+    setZamenik2GornjeF(false);
+    setSakljucarDonjeF(false);
+    setZamenik1DonjeF(false);
+    setZamenik2DonjeF(false);
+
     switch (selectedOption) {
       case "sakljucarGornje":
         setSakljucarGornjeF((prev) => !prev);

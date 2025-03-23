@@ -1,54 +1,122 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Groups } from "../../Classes/Groups";
 
 type PrijemProps = {
   pripravnost: boolean;
   kadrovskiBroj: string;
-
   setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+
+  predsednikKomisijeP: boolean;
+  setPredsednikKomisijeP: React.Dispatch<React.SetStateAction<boolean>>;
+
+  zamenikPredsednikaP: boolean;
+  setZamenikPredsednikaP: React.Dispatch<React.SetStateAction<boolean>>;
+
+  clanKomisije2P: boolean;
+  setClanKomisije2P: React.Dispatch<React.SetStateAction<boolean>>;
+
+  zamenikClana2P: boolean;
+  setZamenikClana2P: React.Dispatch<React.SetStateAction<boolean>>;
+
+  clanKomisije3P: boolean;
+  setClanKomisije3P: React.Dispatch<React.SetStateAction<boolean>>;
+
+  zamenikClana3P: boolean;
+  setZamenikClana3P: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Prijem({ pripravnost, setGroups }: PrijemProps) {
-  const [predsednikKomisije, setPredsednikKomisije] = useState<boolean>(false);
-  const [zamenikPredsednika, setZamenikPredsednika] = useState<boolean>(false);
-
-  const [clanKomisije2, setClanKomisije2] = useState<boolean>(false);
-  const [zamenikClana2, setZamenikClana2] = useState<boolean>(false);
-
-  const [clanKomisije3, setClanKomisije3] = useState<boolean>(false);
-  const [zamenikClana3, setZamenikClana3] = useState<boolean>(false);
+export default function Prijem({
+  pripravnost,
+  setGroups,
+  kadrovskiBroj,
+  predsednikKomisijeP,
+  setPredsednikKomisijeP,
+  zamenikPredsednikaP,
+  setZamenikPredsednikaP,
+  clanKomisije2P,
+  setClanKomisije2P,
+  zamenikClana2P,
+  setZamenikClana2P,
+  clanKomisije3P,
+  setClanKomisije3P,
+  zamenikClana3P,
+  setZamenikClana3P,
+}: PrijemProps) {
+  //////////////////////////////////////////////////////////////////////////////////
 
   const handlePosition = (selectedOption: string) => {
-    setPredsednikKomisije(false);
-    setZamenikPredsednika(false);
-    setClanKomisije2(false);
-    setZamenikClana2(false);
-    setClanKomisije3(false);
-    setZamenikClana3(false);
+    setPredsednikKomisijeP(false);
+    setZamenikPredsednikaP(false);
+    setClanKomisije2P(false);
+    setZamenikClana2P(false);
+    setClanKomisije3P(false);
+    setZamenikClana3P(false);
 
     switch (selectedOption) {
       case "predsednikKomisije":
-        setPredsednikKomisije(!predsednikKomisije);
+        setPredsednikKomisijeP((prev) => !prev);
         break;
       case "zamenikPredsednika":
-        setZamenikPredsednika(!zamenikPredsednika);
+        setZamenikPredsednikaP((prev) => !prev);
         break;
       case "clanKomisije2":
-        setClanKomisije2(!clanKomisije2);
+        setClanKomisije2P((prev) => !prev);
         break;
       case "zamenikClana2":
-        setZamenikClana2(!zamenikClana2);
+        setZamenikClana2P((prev) => !prev);
         break;
       case "clanKomisije3":
-        setClanKomisije3(!clanKomisije3);
+        setClanKomisije3P((prev) => !prev);
         break;
       case "zamenikClana3":
-        setZamenikClana3(!zamenikClana3);
+        setZamenikClana3P((prev) => !prev);
+        break;
+      default:
         break;
     }
   };
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    setGroups((prevGroups) => {
+      const updatedGroups = { ...prevGroups };
+
+      updatedGroups.prijem.predsednik = predsednikKomisijeP
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.prijem.zamenikPredsednika = zamenikPredsednikaP
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.prijem.clanKomisije2 = clanKomisije2P
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.prijem.zamenikClana2 = zamenikClana2P
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.prijem.clanKomisije3 = clanKomisije3P
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.prijem.zamenikClana3 = zamenikClana3P
+        ? kadrovskiBroj
+        : null;
+
+      console.log("Updated Groups After:", updatedGroups);
+
+      return updatedGroups;
+    });
+  }, [
+    predsednikKomisijeP,
+    zamenikPredsednikaP,
+    clanKomisije2P,
+    zamenikClana2P,
+    clanKomisije3P,
+    zamenikClana3P,
+  ]);
+
+  //////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div
@@ -70,7 +138,7 @@ export default function Prijem({ pripravnost, setGroups }: PrijemProps) {
                   type="checkbox"
                   disabled={!pripravnost}
                   className="w-5 h-5"
-                  checked={predsednikKomisije}
+                  checked={predsednikKomisijeP}
                   readOnly
                 />
                 <span>Predsednik</span>
@@ -83,7 +151,7 @@ export default function Prijem({ pripravnost, setGroups }: PrijemProps) {
                   type="checkbox"
                   disabled={!pripravnost}
                   className="w-5 h-5"
-                  checked={zamenikPredsednika}
+                  checked={zamenikPredsednikaP}
                   readOnly
                 />
                 <span>Zamenik predsednika</span>
@@ -96,7 +164,7 @@ export default function Prijem({ pripravnost, setGroups }: PrijemProps) {
                   type="checkbox"
                   disabled={!pripravnost}
                   className="w-5 h-5"
-                  checked={clanKomisije2}
+                  checked={clanKomisije2P}
                   readOnly
                 />
                 <span>Drugi clan</span>
@@ -109,7 +177,7 @@ export default function Prijem({ pripravnost, setGroups }: PrijemProps) {
                   type="checkbox"
                   disabled={!pripravnost}
                   className="w-5 h-5"
-                  checked={zamenikClana2}
+                  checked={zamenikClana2P}
                   readOnly
                 />
                 <span>Zamenik drugog clana</span>
@@ -122,7 +190,7 @@ export default function Prijem({ pripravnost, setGroups }: PrijemProps) {
                   type="checkbox"
                   disabled={!pripravnost}
                   className="w-5 h-5"
-                  checked={clanKomisije3}
+                  checked={clanKomisije3P}
                   readOnly
                 />
                 <span>Treci clan</span>
@@ -135,7 +203,7 @@ export default function Prijem({ pripravnost, setGroups }: PrijemProps) {
                   type="checkbox"
                   disabled={!pripravnost}
                   className="w-5 h-5"
-                  checked={zamenikClana3}
+                  checked={zamenikClana3P}
                   readOnly
                 />
                 <span>Zamenik treceg clana</span>

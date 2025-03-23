@@ -55,6 +55,13 @@ export default function Ekspozitura({
 
   // 🔹 Function to update local state only
   const handlePosition = (selectedOption: string) => {
+    setSakljucarGornjeE(false);
+    setZamenik1GornjeE(false);
+    setZamenik2GornjeE(false);
+    setSakljucarDonjeE(false);
+    setZamenik1DonjeE(false);
+    setZamenik2DonjeE(false);
+
     switch (selectedOption) {
       case "sakljucarGornje":
         setSakljucarGornjeE((prev) => !prev);

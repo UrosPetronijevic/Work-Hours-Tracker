@@ -31,6 +31,8 @@ export default function Section2({
   setPrevoz,
   kadrovskiBroj,
 }: Section2Props) {
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
   const [sakljucarFilijala, setSakljucarFilijala] = useState(true);
   const [sakljucarEkspozitura, setSakljucarEkspozitura] = useState(false);
   const [komisijaZaPrijem, setKomisijaZaPrijem] = useState(false);
