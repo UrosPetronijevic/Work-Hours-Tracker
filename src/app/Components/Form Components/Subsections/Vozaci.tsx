@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Groups } from "../../Classes/Groups";
 
 type VozaciProps = {
@@ -8,25 +8,55 @@ type VozaciProps = {
   kadrovskiBroj: string;
 
   setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+
+  glavniVozac: boolean;
+  setGlavniVozac: React.Dispatch<React.SetStateAction<boolean>>;
+
+  zamenikVozaca: boolean;
+  setZamenikVozaca: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Vozaci({ pripravnost, setGroups }: VozaciProps) {
-  const [vozac, setVozac] = useState<boolean>(false);
-  const [zamenikPredsednika, setZamenikPredsednika] = useState<boolean>(false);
+export default function Vozaci({
+  pripravnost,
+  kadrovskiBroj,
+  setGroups,
+  glavniVozac,
+  setGlavniVozac,
+  zamenikVozaca,
+  setZamenikVozaca,
+}: VozaciProps) {
+  //////////////////////////////////////////////////////////////////////////////////
 
   const handlePosition = (selectedOption: string) => {
-    setVozac(false);
-    setZamenikPredsednika(false);
+    setGlavniVozac(false);
+    setZamenikVozaca(false);
 
     switch (selectedOption) {
       case "Vozac":
-        setVozac(!vozac);
+        setGlavniVozac((prev) => !prev);
         break;
       case "zamenikPredsednika":
-        setZamenikPredsednika(!zamenikPredsednika);
+        setZamenikVozaca((prev) => !prev);
         break;
     }
   };
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    setGroups((prevGroups) => {
+      const updatedGroups = { ...prevGroups };
+
+      updatedGroups.vozaci.vozac = glavniVozac ? kadrovskiBroj : null;
+      updatedGroups.vozaci.zamenaVozaca = zamenikVozaca ? kadrovskiBroj : null;
+
+      console.log("Updated Groups After:", updatedGroups);
+
+      return updatedGroups;
+    });
+  }, [glavniVozac, zamenikVozaca]);
+
+  //////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div
@@ -47,7 +77,7 @@ export default function Vozaci({ pripravnost, setGroups }: VozaciProps) {
                   type="checkbox"
                   disabled={!pripravnost}
                   className="w-5 h-5"
-                  checked={vozac}
+                  checked={glavniVozac}
                   readOnly
                 />
                 <span>Vozac</span>
@@ -60,7 +90,7 @@ export default function Vozaci({ pripravnost, setGroups }: VozaciProps) {
                   type="checkbox"
                   disabled={!pripravnost}
                   className="w-5 h-5"
-                  checked={zamenikPredsednika}
+                  checked={zamenikVozaca}
                   readOnly
                 />
                 <span>Zamenik vozaca</span>

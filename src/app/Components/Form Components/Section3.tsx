@@ -79,6 +79,23 @@ export default function Section3({
 
   ////////////////////////////////////////////////////////////////////////////////////////////
 
+  const [nepredvidjeniGornjeF, setNepredvidjeniGornjeF] =
+    useState<boolean>(false);
+  const [nepredvidjeniDonjeF, setNepredvidjeniDonjeF] =
+    useState<boolean>(false);
+
+  const [nepredvidjeniGornjeE, setNepredvidjeniGornjeE] =
+    useState<boolean>(false);
+  const [nepredvidjeniDonjeE, setNepredvidjeniDonjeE] =
+    useState<boolean>(false);
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [glavniVozac, setGlavniVozac] = useState<boolean>(false);
+  const [zamenikVozaca, setZamenikVozaca] = useState<boolean>(false);
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
   return (
     <div className="flex flex-col justify-between">
       {sakljucarFilijala && (
@@ -174,18 +191,28 @@ export default function Section3({
           pripravnost={pripravnost}
           setGroups={setGroups}
           kadrovskiBroj={kadrovskiBroj}
-          // Pass all states
+          //////////////////////////////////////////////////////////
+
           predsednikKomisijeN={predsednikKomisijeN}
           zamenikPredsednikaN={zamenikPredsednikaN}
+          /////////
+
           clanKomisije2N={clanKomisije2N}
           zamenikClana2N={zamenikClana2N}
+          /////////
+
           clanKomisije3N={clanKomisije3N}
           zamenikClana3N={zamenikClana3N}
-          // Pass setter functions
+          /////////
+
           setPredsednikKomisijeN={setPredsednikKomisijeN}
           setZamenikPredsednikaN={setZamenikPredsednikaN}
+          /////////
+
           setClanKomisije2N={setClanKomisije2N}
           setZamenikClana2N={setZamenikClana2N}
+          /////////
+
           setClanKomisije3N={setClanKomisije3N}
           setZamenikClana3N={setZamenikClana3N}
         />
@@ -196,6 +223,22 @@ export default function Section3({
           pripravnost={pripravnost}
           setGroups={setGroups}
           kadrovskiBroj={kadrovskiBroj}
+          //////////////////////////////////////////////////////////
+
+          nepredvidjeniGornjeF={nepredvidjeniGornjeF}
+          setNepredvidjeniGornjeF={setNepredvidjeniGornjeF}
+          /////////
+
+          nepredvidjeniDonjeF={nepredvidjeniDonjeF}
+          setNepredvidjeniDonjeF={setNepredvidjeniDonjeF}
+          //////////////////////////////////////////////////////////
+
+          nepredvidjeniGornjeE={nepredvidjeniGornjeE}
+          setNepredvidjeniGornjeE={setNepredvidjeniGornjeE}
+          /////////
+
+          nepredvidjeniDonjeE={nepredvidjeniDonjeE}
+          setNepredvidjeniDonjeE={setNepredvidjeniDonjeE}
         />
       )}
 
@@ -204,6 +247,13 @@ export default function Section3({
           pripravnost={pripravnost}
           setGroups={setGroups}
           kadrovskiBroj={kadrovskiBroj}
+          //////////////////////////////////////////////////////////
+
+          glavniVozac={glavniVozac}
+          setGlavniVozac={setGlavniVozac}
+          /////////
+          zamenikVozaca={zamenikVozaca}
+          setZamenikVozaca={setZamenikVozaca}
         />
       )}
 

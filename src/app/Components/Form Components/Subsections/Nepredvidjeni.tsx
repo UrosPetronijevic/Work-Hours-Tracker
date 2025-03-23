@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Groups } from "../../Classes/Groups";
 
 type NepredvidjeniProps = {
@@ -8,47 +8,90 @@ type NepredvidjeniProps = {
   kadrovskiBroj: string;
 
   setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+
+  nepredvidjeniGornjeF: boolean;
+  setNepredvidjeniGornjeF: React.Dispatch<React.SetStateAction<boolean>>;
+
+  nepredvidjeniDonjeF: boolean;
+  setNepredvidjeniDonjeF: React.Dispatch<React.SetStateAction<boolean>>;
+
+  nepredvidjeniGornjeE: boolean;
+  setNepredvidjeniGornjeE: React.Dispatch<React.SetStateAction<boolean>>;
+
+  nepredvidjeniDonjeE: boolean;
+  setNepredvidjeniDonjeE: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function Nepredvidjeni({
   pripravnost,
+  kadrovskiBroj,
   setGroups,
+  nepredvidjeniGornjeF,
+  setNepredvidjeniGornjeF,
+  nepredvidjeniDonjeF,
+  setNepredvidjeniDonjeF,
+  nepredvidjeniGornjeE,
+  setNepredvidjeniGornjeE,
+  nepredvidjeniDonjeE,
+  setNepredvidjeniDonjeE,
 }: NepredvidjeniProps) {
-  const [nepredvidjeniGornjeFilijala, setNepredvidjeniGornjeFilijala] =
-    useState<boolean>(false);
-  const [nepredvidjeniDonjeFilijala, setNepredvidjeniDonjeFilijala] =
-    useState<boolean>(false);
-
-  const [nepredvidjeniGornjeEkspozitura, setNepredvidjeniGornjeEkspozitura] =
-    useState<boolean>(false);
-  const [nepredvidjeniDonjeEkspozitura, setNepredvidjeniDonjeEkspozitura] =
-    useState<boolean>(false);
   //////////////////////////////////////////////////////////////////////////////////
 
   const handlePosition = (selectedOption: string) => {
-    setNepredvidjeniGornjeFilijala(false);
-    setNepredvidjeniDonjeFilijala(false);
+    setNepredvidjeniGornjeF(false);
+    setNepredvidjeniDonjeF(false);
 
-    setNepredvidjeniGornjeEkspozitura(false);
-    setNepredvidjeniDonjeEkspozitura(false);
+    setNepredvidjeniGornjeE(false);
+    setNepredvidjeniDonjeE(false);
 
     switch (selectedOption) {
       case "nepredvidjeniFilijalaGornje":
-        setNepredvidjeniGornjeFilijala(true);
+        setNepredvidjeniGornjeF((prev) => !prev);
         break;
       case "nepredvidjeniFilijalaDonje":
-        setNepredvidjeniDonjeFilijala(true);
+        setNepredvidjeniDonjeF((prev) => !prev);
         break;
       case "nepredvidjeniEkspozituraGornje":
-        setNepredvidjeniGornjeEkspozitura(true);
+        setNepredvidjeniGornjeE((prev) => !prev);
         break;
       case "nepredvidjeniEkspozituraDonje":
-        setNepredvidjeniDonjeEkspozitura(true);
+        setNepredvidjeniDonjeE((prev) => !prev);
         break;
       default:
         break;
     }
   };
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    setGroups((prevGroups) => {
+      const updatedGroups = { ...prevGroups };
+
+      // Assign new values (only update the relevant one)
+      updatedGroups.filijala.sakljucariGornje.nepredvidjeni =
+        nepredvidjeniGornjeF ? kadrovskiBroj : null;
+      updatedGroups.filijala.sakljucariDonje.nepredvidjeni = nepredvidjeniDonjeF
+        ? kadrovskiBroj
+        : null;
+      updatedGroups.ekspozitura.sakljucariGornje.nepredvidjeni =
+        nepredvidjeniGornjeE ? kadrovskiBroj : null;
+
+      updatedGroups.ekspozitura.sakljucariDonje.nepredvidjeni =
+        nepredvidjeniDonjeE ? kadrovskiBroj : null;
+
+      console.log("Updated Groups:", prevGroups);
+
+      return updatedGroups;
+    });
+  }, [
+    nepredvidjeniGornjeF,
+    nepredvidjeniDonjeF,
+    nepredvidjeniGornjeE,
+    nepredvidjeniDonjeE,
+  ]);
+
+  //////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div
@@ -70,6 +113,8 @@ export default function Nepredvidjeni({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={nepredvidjeniGornjeF}
+                  readOnly
                 />
                 <span>Nepredvidjeni gornje</span>
               </label>
@@ -81,6 +126,8 @@ export default function Nepredvidjeni({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={nepredvidjeniDonjeF}
+                  readOnly
                 />
                 <span>Nepredvidjeni Donje</span>
               </label>
@@ -99,6 +146,8 @@ export default function Nepredvidjeni({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={nepredvidjeniGornjeE}
+                  readOnly
                 />
                 <span>Nepredvidjeni gornje</span>
               </label>
@@ -110,6 +159,8 @@ export default function Nepredvidjeni({
                   type="checkbox"
                   disabled={!pripravnost}
                   className=" w-5 h-5"
+                  checked={nepredvidjeniDonjeE}
+                  readOnly
                 />
                 <span>Nepredvidjeni Donje</span>
               </label>
