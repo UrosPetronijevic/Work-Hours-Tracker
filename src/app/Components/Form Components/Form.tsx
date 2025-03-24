@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Employee } from "../Classes/Employee";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
@@ -19,6 +19,8 @@ export default function Form({ setEmployees, setGroups }: FormProps) {
   const [ime, setIme] = useState<string>("");
   const [prezime, setPrezime] = useState<string>("");
   const [kadrovskiBroj, setKadrovskiBroj] = useState<string>("");
+  const [datumRodjenja, setDatumRodjenja] = useState<string>("");
+  const [radniStaz, setRadniStaz] = useState<string>("");
   //////////////////////////////////////////////////////////////////////////////////
 
   const [odredjeno, setOdredjeno] = useState<boolean>(false);
@@ -35,6 +37,14 @@ export default function Form({ setEmployees, setGroups }: FormProps) {
 
   //////////////////////////////////////////////////////////////////////////////////
 
+  const [proceed, setProceed] = useState<boolean>(false);
+
+  useEffect(() => {
+    setProceed(ime !== "" && prezime !== "" && kadrovskiBroj !== "");
+  }, [ime, prezime, kadrovskiBroj]);
+
+  //////////////////////////////////////////////////////////////////////////////////
+
   return (
     <div className="w-[80%] bg-white h-[80%] grid grid-cols-[33%_66%] p-10 rounded-2xl gap-8 items-center">
       <Section1
@@ -44,14 +54,10 @@ export default function Form({ setEmployees, setGroups }: FormProps) {
         setPrezime={setPrezime}
         kadrovskiBroj={kadrovskiBroj}
         setKadrovskiBroj={setKadrovskiBroj}
-        pp={pp}
-        setPp={setPp}
-        odredjeno={odredjeno}
-        setOdredjeno={setOdredjeno}
-        neodredjeno={neodredjeno}
-        setNeodredjeno={setNeodredjeno}
-        zadruga={zadruga}
-        setZadruga={setZadruga}
+        datumRodjenja={datumRodjenja}
+        setDatumRodjenja={setDatumRodjenja}
+        radniStaz={radniStaz}
+        setRadniStaz={setRadniStaz}
       />
 
       <Section2
@@ -65,6 +71,15 @@ export default function Form({ setEmployees, setGroups }: FormProps) {
         setPrevoz={setPrevoz}
         setGroups={setGroups}
         kadrovskiBroj={kadrovskiBroj}
+        proceed={proceed}
+        pp={pp}
+        setPp={setPp}
+        odredjeno={odredjeno}
+        setOdredjeno={setOdredjeno}
+        neodredjeno={neodredjeno}
+        setNeodredjeno={setNeodredjeno}
+        zadruga={zadruga}
+        setZadruga={setZadruga}
       />
     </div>
   );

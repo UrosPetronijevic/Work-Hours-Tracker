@@ -17,6 +17,16 @@ type Section2Props = {
   kadrovskiBroj: string;
 
   setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+  proceed: boolean;
+
+  pp: boolean;
+  setPp: React.Dispatch<React.SetStateAction<boolean>>;
+  odredjeno: boolean;
+  setOdredjeno: React.Dispatch<React.SetStateAction<boolean>>;
+  neodredjeno: boolean;
+  setNeodredjeno: React.Dispatch<React.SetStateAction<boolean>>;
+  zadruga: boolean;
+  setZadruga: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function Section2({
@@ -30,6 +40,15 @@ export default function Section2({
   prevoz,
   setPrevoz,
   kadrovskiBroj,
+  proceed,
+  pp,
+  setPp,
+  odredjeno,
+  setOdredjeno,
+  neodredjeno,
+  setNeodredjeno,
+  zadruga,
+  setZadruga,
 }: Section2Props) {
   ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -81,8 +100,12 @@ export default function Section2({
   //////////////////////////////////////////////////////////////////////////////////
 
   return (
-    <div className="grid grid-cols-2 w-full h-full gap-8">
-      <div className="flex flex-col gap-4 px-4 py-8 h-full justify-between border-l border-r border-t border-gray-200 shadow-lg rounded-[.7rem] select-none">
+    <div
+      className={`grid grid-cols-2 w-full h-full gap-8 ${
+        proceed ? "cursor-pointer" : "pointer-events-none"
+      }`}
+    >
+      <div className="flex flex-col gap-4 px-4 py-8 h-full border-l border-r border-t border-gray-200 shadow-lg rounded-[.7rem] select-none">
         {/* Pripravnost */}
         <div className="flex justify-center w-full">
           <div className="p-2 bg-white rounded border border-gray-300 flex items-center w-[80%] cursor-pointer">
@@ -101,7 +124,11 @@ export default function Section2({
                 </label>
               </div>
               <div className="flex items-center justify-start w-[60%]">
-                <span className="text-sm font-medium text-gray-700">
+                <span
+                  className={`${
+                    proceed ? "text-gray-700" : "text-slate-400"
+                  } text-sm font-medium`}
+                >
                   Pripravnost
                 </span>
               </div>
@@ -124,54 +151,6 @@ export default function Section2({
           </div>
         </div>
 
-        {/* Dodatno Opt */}
-        <div className="flex justify-center w-full">
-          <div
-            className="p-2 bg-white rounded border border-gray-300 flex items-center w-[80%] cursor-pointer"
-            onClick={() => setDodatnoOpt(!dodatnoOpt)} // Toggle checkbox on click
-          >
-            <div className="flex items-center justify-center w-[40%]">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={dodatnoOpt}
-                  onChange={() => setDodatnoOpt(!dodatnoOpt)} // Ensure the checkbox still works if clicked directly
-                  className="w-5 h-5 rounded-md cursor-pointer"
-                />
-              </label>
-            </div>
-            <div className="flex items-center justify-start w-[60%]">
-              <span className="text-sm font-medium text-gray-700">
-                Dodatno Opt.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Prekovremeni */}
-        <div className="flex justify-center w-full">
-          <div
-            className="p-2 bg-white rounded border border-gray-300 flex items-center w-[80%] cursor-pointer"
-            onClick={() => setPrekovremeni(!prekovremeni)} // Toggle checkbox on click
-          >
-            <div className="flex items-center justify-center w-[40%]">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={prekovremeni}
-                  onChange={() => setPrekovremeni(!prekovremeni)} // Ensure the checkbox still works if clicked directly
-                  className="w-5 h-5 rounded-md cursor-pointer"
-                />
-              </label>
-            </div>
-            <div className="flex items-center justify-start w-[60%]">
-              <span className="text-sm font-medium text-gray-700">
-                Prekovremeni
-              </span>
-            </div>
-          </div>
-        </div>
-
         {/* Prevoz */}
         <div className="flex justify-center w-full">
           <div
@@ -189,7 +168,78 @@ export default function Section2({
               </label>
             </div>
             <div className="flex items-center justify-start w-[60%]">
-              <span className="text-sm font-medium text-gray-700">Prevoz</span>
+              <span
+                className={`${
+                  proceed ? "text-gray-700" : "text-slate-400"
+                } text-sm font-medium`}
+              >
+                Prevoz
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex gap-4 bg-blue-100 p-2 rounded">
+          {/* Left Column */}
+          <div className="flex flex-col w-full justify-center gap-4 p-2">
+            {/* Neodređeno */}
+            <div className="p-2 bg-white rounded">
+              <label className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-700">
+                  Neodređeno
+                </span>
+                <input
+                  type="checkbox"
+                  checked={neodredjeno}
+                  onChange={() => setNeodredjeno(!neodredjeno)}
+                  className="w-5 h-5 accent-blue-600 rounded cursor-pointer"
+                />
+              </label>
+            </div>
+            {/* Određeno */}
+            <div className="p-2 bg-white rounded">
+              <label className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-700">
+                  Određeno
+                </span>
+                <input
+                  type="checkbox"
+                  checked={odredjeno}
+                  onChange={() => setOdredjeno(!odredjeno)}
+                  className="w-5 h-5 accent-blue-600 rounded cursor-pointer"
+                />
+              </label>
+            </div>
+          </div>
+
+          {/* Right Column */}
+          <div className="flex flex-col w-full justify-center gap-4 p-2">
+            {/* Stalni */}
+            <div className="p-2 bg-white rounded">
+              <label className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-700">PP</span>
+                <input
+                  type="checkbox"
+                  checked={pp}
+                  onChange={() => setPp(!pp)}
+                  className="w-5 h-5 accent-blue-600 rounded cursor-pointer"
+                />
+              </label>
+            </div>
+
+            {/* Zadruga */}
+            <div className="p-2 bg-white rounded">
+              <label className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-700">
+                  Zadruga
+                </span>
+                <input
+                  type="checkbox"
+                  checked={zadruga}
+                  onChange={() => setZadruga(!zadruga)}
+                  className="w-5 h-5 accent-blue-600 rounded cursor-pointer"
+                />
+              </label>
             </div>
           </div>
         </div>
