@@ -3,8 +3,12 @@
 import { useState } from "react";
 import Section3 from "./Section3";
 import { Groups } from "../Classes/Groups";
+import { Employee } from "../Classes/Employee";
 
 type Section2Props = {
+  setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+
   dodatnoOpt: boolean;
   setDodatnoOpt: React.Dispatch<React.SetStateAction<boolean>>;
   pripravnost: boolean;
@@ -14,9 +18,12 @@ type Section2Props = {
   prevoz: boolean;
   setPrevoz: React.Dispatch<React.SetStateAction<boolean>>;
 
+  ime: string;
+  prezime: string;
   kadrovskiBroj: string;
+  datumRodjenja: string;
+  radniStaz: string;
 
-  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
   proceed: boolean;
 
   pp: boolean;
@@ -27,10 +34,13 @@ type Section2Props = {
   setNeodredjeno: React.Dispatch<React.SetStateAction<boolean>>;
   zadruga: boolean;
   setZadruga: React.Dispatch<React.SetStateAction<boolean>>;
+
+  setForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function Section2({
   setGroups,
+  setEmployees,
   dodatnoOpt,
   setDodatnoOpt,
   pripravnost,
@@ -39,7 +49,11 @@ export default function Section2({
   setPrekovremeni,
   prevoz,
   setPrevoz,
+  ime,
+  prezime,
   kadrovskiBroj,
+  datumRodjenja,
+  radniStaz,
   proceed,
   pp,
   setPp,
@@ -49,6 +63,7 @@ export default function Section2({
   setNeodredjeno,
   zadruga,
   setZadruga,
+  setForm,
 }: Section2Props) {
   ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -105,7 +120,7 @@ export default function Section2({
         proceed ? "cursor-pointer" : "pointer-events-none"
       }`}
     >
-      <div className="flex flex-col gap-4 px-4 py-8 h-full border-l border-r border-t border-gray-200 shadow-lg rounded-[.7rem] select-none">
+      <div className="flex flex-col justify-between gap-4 px-4 py-8 h-full border-l border-r border-t border-gray-200 shadow-lg rounded-[.7rem] select-none">
         {/* Pripravnost */}
         <div className="flex justify-center w-full">
           <div className="p-2 bg-white rounded border border-gray-300 flex items-center w-[80%] cursor-pointer">
@@ -246,7 +261,6 @@ export default function Section2({
       </div>
 
       <Section3
-        pripravnost={pripravnost}
         sakljucarFilijala={sakljucarFilijala}
         sakljucarEkspozitura={sakljucarEkspozitura}
         komisijaZaPrijem={komisijaZaPrijem}
@@ -254,7 +268,22 @@ export default function Section2({
         nepredvidjeni={nepredvidjeni}
         vozac={vozac}
         setGroups={setGroups}
+        setEmployees={setEmployees}
+        ///////
+        ime={ime}
+        prezime={prezime}
         kadrovskiBroj={kadrovskiBroj}
+        datumRodjenja={datumRodjenja}
+        radniStaz={radniStaz}
+        ///////
+        pripravnost={pripravnost}
+        prevoz={prevoz}
+        ///////
+        pp={pp}
+        odredjeno={odredjeno}
+        neodredjeno={neodredjeno}
+        zadruga={zadruga}
+        setForm={setForm}
       />
     </div>
   );

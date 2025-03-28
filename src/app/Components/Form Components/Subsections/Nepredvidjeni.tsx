@@ -64,32 +64,32 @@ export default function Nepredvidjeni({
 
   //////////////////////////////////////////////////////////////////////////////////
 
-  useEffect(() => {
-    setGroups((prevGroups) => {
-      const updatedGroups = { ...prevGroups };
+  // useEffect(() => {
+  //   setGroups((prevGroups) => {
+  //     const updatedGroups = { ...prevGroups };
 
-      // Assign new values (only update the relevant one)
-      updatedGroups.filijala.sakljucariGornje.nepredvidjeni =
-        nepredvidjeniGornjeF ? kadrovskiBroj : null;
-      updatedGroups.filijala.sakljucariDonje.nepredvidjeni = nepredvidjeniDonjeF
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.ekspozitura.sakljucariGornje.nepredvidjeni =
-        nepredvidjeniGornjeE ? kadrovskiBroj : null;
+  //     // Assign new values (only update the relevant one)
+  //     updatedGroups.filijala.sakljucariGornje.nepredvidjeni =
+  //       nepredvidjeniGornjeF ? kadrovskiBroj : null;
+  //     updatedGroups.filijala.sakljucariDonje.nepredvidjeni = nepredvidjeniDonjeF
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.ekspozitura.sakljucariGornje.nepredvidjeni =
+  //       nepredvidjeniGornjeE ? kadrovskiBroj : null;
 
-      updatedGroups.ekspozitura.sakljucariDonje.nepredvidjeni =
-        nepredvidjeniDonjeE ? kadrovskiBroj : null;
+  //     updatedGroups.ekspozitura.sakljucariDonje.nepredvidjeni =
+  //       nepredvidjeniDonjeE ? kadrovskiBroj : null;
 
-      console.log("Updated Groups:", prevGroups);
+  //     console.log("Updated Groups:", prevGroups);
 
-      return updatedGroups;
-    });
-  }, [
-    nepredvidjeniGornjeF,
-    nepredvidjeniDonjeF,
-    nepredvidjeniGornjeE,
-    nepredvidjeniDonjeE,
-  ]);
+  //     return updatedGroups;
+  //   });
+  // }, [
+  //   nepredvidjeniGornjeF,
+  //   nepredvidjeniDonjeF,
+  //   nepredvidjeniGornjeE,
+  //   nepredvidjeniDonjeE,
+  // ]);
 
   //////////////////////////////////////////////////////////////////////////////////
 

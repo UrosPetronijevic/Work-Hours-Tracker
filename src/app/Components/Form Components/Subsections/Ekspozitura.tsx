@@ -89,43 +89,43 @@ export default function Ekspozitura({
   //////////////////////////////////////////////////////////////////////////////////
 
   // 🔹 Sync local state to `setGroups` safely after updates
-  useEffect(() => {
-    setGroups((prevGroups) => {
-      const updatedGroups = { ...prevGroups };
+  // useEffect(() => {
+  //   setGroups((prevGroups) => {
+  //     const updatedGroups = { ...prevGroups };
 
-      console.log("Updated Groups:", prevGroups);
+  //     console.log("Updated Groups:", prevGroups);
 
-      // Assign new values (only update the relevant one)
-      updatedGroups.ekspozitura.sakljucariGornje.sakljucar = sakljucarGornjeE
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.ekspozitura.sakljucariGornje.zamenik1 = zamenik1GornjeE
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.ekspozitura.sakljucariGornje.zamenik2 = zamenik2GornjeE
-        ? kadrovskiBroj
-        : null;
+  //     // Assign new values (only update the relevant one)
+  //     updatedGroups.ekspozitura.sakljucariGornje.sakljucar = sakljucarGornjeE
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.ekspozitura.sakljucariGornje.zamenik1 = zamenik1GornjeE
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.ekspozitura.sakljucariGornje.zamenik2 = zamenik2GornjeE
+  //       ? kadrovskiBroj
+  //       : null;
 
-      updatedGroups.ekspozitura.sakljucariDonje.sakljucar = sakljucarDonjeE
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.ekspozitura.sakljucariDonje.zamenik1 = zamenik1DonjeE
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.ekspozitura.sakljucariDonje.zamenik2 = zamenik2DonjeE
-        ? kadrovskiBroj
-        : null;
+  //     updatedGroups.ekspozitura.sakljucariDonje.sakljucar = sakljucarDonjeE
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.ekspozitura.sakljucariDonje.zamenik1 = zamenik1DonjeE
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.ekspozitura.sakljucariDonje.zamenik2 = zamenik2DonjeE
+  //       ? kadrovskiBroj
+  //       : null;
 
-      return updatedGroups;
-    });
-  }, [
-    sakljucarGornjeE,
-    zamenik1GornjeE,
-    zamenik2GornjeE,
-    sakljucarDonjeE,
-    zamenik1DonjeE,
-    zamenik2DonjeE,
-  ]);
+  //     return updatedGroups;
+  //   });
+  // }, [
+  //   sakljucarGornjeE,
+  //   zamenik1GornjeE,
+  //   zamenik2GornjeE,
+  //   sakljucarDonjeE,
+  //   zamenik1DonjeE,
+  //   zamenik2DonjeE,
+  // ]);
   //////////////////////////////////////////////////////////////////////////////////
 
   return (

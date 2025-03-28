@@ -43,18 +43,18 @@ export default function Vozaci({
 
   //////////////////////////////////////////////////////////////////////////////////
 
-  useEffect(() => {
-    setGroups((prevGroups) => {
-      const updatedGroups = { ...prevGroups };
+  // useEffect(() => {
+  //   setGroups((prevGroups) => {
+  //     const updatedGroups = { ...prevGroups };
 
-      updatedGroups.vozaci.vozac = glavniVozac ? kadrovskiBroj : null;
-      updatedGroups.vozaci.zamenaVozaca = zamenikVozaca ? kadrovskiBroj : null;
+  //     updatedGroups.vozaci.vozac = glavniVozac ? kadrovskiBroj : null;
+  //     updatedGroups.vozaci.zamenaVozaca = zamenikVozaca ? kadrovskiBroj : null;
 
-      console.log("Updated Groups After:", updatedGroups);
+  //     console.log("Updated Groups After:", updatedGroups);
 
-      return updatedGroups;
-    });
-  }, [glavniVozac, zamenikVozaca]);
+  //     return updatedGroups;
+  //   });
+  // }, [glavniVozac, zamenikVozaca]);
 
   //////////////////////////////////////////////////////////////////////////////////
 

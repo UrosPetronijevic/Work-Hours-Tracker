@@ -10,10 +10,10 @@ import { Groups } from "../Classes/Groups";
 type FormProps = {
   setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
   setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+  setForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Form({ setEmployees, setGroups }: FormProps) {
-  const [employee, setEmployee] = useState<Employee>();
+export default function Form({ setEmployees, setGroups, setForm }: FormProps) {
   //////////////////////////////////////////////////////////////////////////////////
 
   const [ime, setIme] = useState<string>("");
@@ -61,6 +61,9 @@ export default function Form({ setEmployees, setGroups }: FormProps) {
       />
 
       <Section2
+        setGroups={setGroups}
+        setEmployees={setEmployees}
+        ///////////
         dodatnoOpt={dodatnoOpt}
         setDodatnoOpt={setDodatnoOpt}
         pripravnost={pripravnost}
@@ -69,8 +72,6 @@ export default function Form({ setEmployees, setGroups }: FormProps) {
         setPrekovremeni={setPrekovremeni}
         prevoz={prevoz}
         setPrevoz={setPrevoz}
-        setGroups={setGroups}
-        kadrovskiBroj={kadrovskiBroj}
         proceed={proceed}
         pp={pp}
         setPp={setPp}
@@ -80,6 +81,14 @@ export default function Form({ setEmployees, setGroups }: FormProps) {
         setNeodredjeno={setNeodredjeno}
         zadruga={zadruga}
         setZadruga={setZadruga}
+        //////
+
+        ime={ime}
+        prezime={prezime}
+        kadrovskiBroj={kadrovskiBroj}
+        datumRodjenja={datumRodjenja}
+        radniStaz={radniStaz}
+        setForm={setForm}
       />
     </div>
   );

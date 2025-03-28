@@ -9,14 +9,15 @@ export class Employee {
   prezimeZaposlenog: string = "";
   kadrovskiBroj: string = "";
 
+  radniStaz: string = "";
+  datumRodjenja: string = "";
+
   zaposleniNaOdredjeno: boolean = false;
   zaposleniNaNeodredjeno: boolean = false;
   zaposleniPrekoZadruge: boolean = false;
   pp: boolean = false;
 
-  dodatnoOpt: boolean = false;
   pripravnost: boolean = false;
-  prekovremeni: boolean = false;
   prevoz: boolean = false;
 
   fondSati: number = 0;
@@ -46,28 +47,30 @@ export class Employee {
     prezime: string,
     kadrovskiBroj: string,
 
+    radniStaz: string,
+    datumRodjenja: string,
+
     odredjeno: boolean,
     neodredjeno: boolean,
     zadruga: boolean,
     pp: boolean,
 
-    dodatnoOpt: boolean,
     pripravnost: boolean,
-    prekovremeni: boolean,
     prevoz: boolean
   ) {
     this.imeZaposlenog = ime;
     this.prezimeZaposlenog = prezime;
     this.kadrovskiBroj = kadrovskiBroj;
 
+    this.radniStaz = radniStaz;
+    this.datumRodjenja = datumRodjenja;
+
     this.zaposleniNaOdredjeno = odredjeno;
     this.zaposleniNaNeodredjeno = neodredjeno;
     this.zaposleniPrekoZadruge = zadruga;
     this.pp = pp;
 
-    this.dodatnoOpt = dodatnoOpt;
     this.pripravnost = pripravnost;
-    this.prekovremeni = prekovremeni;
     this.prevoz = prevoz;
 
     this.fondSati = calculateWorkingHours();
@@ -91,9 +94,6 @@ export class Employee {
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   /// UPOZORENJE NAPRAVITI STATE PA ZAMENITI VALUE TA BI SE TRIGEROVAO REFRESH / a ne ovako kao sto je sad
-  setDodatnoOpt() {
-    this.dodatnoOpt = !this.dodatnoOpt;
-  }
 
   setPripravnost() {
     this.pripravnost = !this.pripravnost;

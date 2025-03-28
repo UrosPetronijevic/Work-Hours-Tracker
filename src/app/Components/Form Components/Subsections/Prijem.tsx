@@ -80,41 +80,41 @@ export default function Prijem({
 
   //////////////////////////////////////////////////////////////////////////////////
 
-  useEffect(() => {
-    setGroups((prevGroups) => {
-      const updatedGroups = { ...prevGroups };
+  // useEffect(() => {
+  //   setGroups((prevGroups) => {
+  //     const updatedGroups = { ...prevGroups };
 
-      updatedGroups.prijem.predsednik = predsednikKomisijeP
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.prijem.zamenikPredsednika = zamenikPredsednikaP
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.prijem.clanKomisije2 = clanKomisije2P
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.prijem.zamenikClana2 = zamenikClana2P
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.prijem.clanKomisije3 = clanKomisije3P
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.prijem.zamenikClana3 = zamenikClana3P
-        ? kadrovskiBroj
-        : null;
+  //     updatedGroups.prijem.predsednik = predsednikKomisijeP
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.prijem.zamenikPredsednika = zamenikPredsednikaP
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.prijem.clanKomisije2 = clanKomisije2P
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.prijem.zamenikClana2 = zamenikClana2P
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.prijem.clanKomisije3 = clanKomisije3P
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.prijem.zamenikClana3 = zamenikClana3P
+  //       ? kadrovskiBroj
+  //       : null;
 
-      console.log("Updated Groups After:", updatedGroups);
+  //     console.log("Updated Groups After:", updatedGroups);
 
-      return updatedGroups;
-    });
-  }, [
-    predsednikKomisijeP,
-    zamenikPredsednikaP,
-    clanKomisije2P,
-    zamenikClana2P,
-    clanKomisije3P,
-    zamenikClana3P,
-  ]);
+  //     return updatedGroups;
+  //   });
+  // }, [
+  //   predsednikKomisijeP,
+  //   zamenikPredsednikaP,
+  //   clanKomisije2P,
+  //   zamenikClana2P,
+  //   clanKomisije3P,
+  //   zamenikClana3P,
+  // ]);
 
   //////////////////////////////////////////////////////////////////////////////////
 

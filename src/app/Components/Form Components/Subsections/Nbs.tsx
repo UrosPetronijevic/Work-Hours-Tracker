@@ -78,31 +78,31 @@ export default function Nbs({
 
   //////////////////////////////////////////////////////////////////////////////////
 
-  useEffect(() => {
-    setGroups((prevGroups) => {
-      const updatedGroups = { ...prevGroups };
+  // useEffect(() => {
+  //   setGroups((prevGroups) => {
+  //     const updatedGroups = { ...prevGroups };
 
-      updatedGroups.nbs.predsednik = predsednikKomisijeN ? kadrovskiBroj : null;
-      updatedGroups.nbs.zamenikPredsednika = zamenikPredsednikaN
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.nbs.clanKomisije2 = clanKomisije2N ? kadrovskiBroj : null;
-      updatedGroups.nbs.zamenikClana2 = zamenikClana2N ? kadrovskiBroj : null;
-      updatedGroups.nbs.clanKomisije3 = clanKomisije3N ? kadrovskiBroj : null;
-      updatedGroups.nbs.zamenikClana3 = zamenikClana3N ? kadrovskiBroj : null;
+  //     updatedGroups.nbs.predsednik = predsednikKomisijeN ? kadrovskiBroj : null;
+  //     updatedGroups.nbs.zamenikPredsednika = zamenikPredsednikaN
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.nbs.clanKomisije2 = clanKomisije2N ? kadrovskiBroj : null;
+  //     updatedGroups.nbs.zamenikClana2 = zamenikClana2N ? kadrovskiBroj : null;
+  //     updatedGroups.nbs.clanKomisije3 = clanKomisije3N ? kadrovskiBroj : null;
+  //     updatedGroups.nbs.zamenikClana3 = zamenikClana3N ? kadrovskiBroj : null;
 
-      console.log("Updated Groups After:", updatedGroups);
+  //     console.log("Updated Groups After:", updatedGroups);
 
-      return updatedGroups;
-    });
-  }, [
-    predsednikKomisijeN,
-    zamenikPredsednikaN,
-    clanKomisije2N,
-    zamenikClana2N,
-    clanKomisije3N,
-    zamenikClana3N,
-  ]);
+  //     return updatedGroups;
+  //   });
+  // }, [
+  //   predsednikKomisijeN,
+  //   zamenikPredsednikaN,
+  //   clanKomisije2N,
+  //   zamenikClana2N,
+  //   clanKomisije3N,
+  //   zamenikClana3N,
+  // ]);
 
   //////////////////////////////////////////////////////////////////////////////////
 

@@ -88,43 +88,43 @@ export default function Filijala({
   //////////////////////////////////////////////////////////////////////////////////
 
   // 🔹 Sync local state to `setGroups` safely after updates
-  useEffect(() => {
-    setGroups((prevGroups) => {
-      const updatedGroups = { ...prevGroups };
+  // useEffect(() => {
+  //   setGroups((prevGroups) => {
+  //     const updatedGroups = { ...prevGroups };
 
-      console.log("Updated Groups:", prevGroups);
+  //     console.log("Updated Groups:", prevGroups);
 
-      // Assign new values (only update the relevant one)
-      updatedGroups.filijala.sakljucariGornje.sakljucar = sakljucarGornjeF
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.filijala.sakljucariGornje.zamenik1 = zamenik1GornjeF
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.filijala.sakljucariGornje.zamenik2 = zamenik2GornjeF
-        ? kadrovskiBroj
-        : null;
+  //     // Assign new values (only update the relevant one)
+  //     updatedGroups.filijala.sakljucariGornje.sakljucar = sakljucarGornjeF
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.filijala.sakljucariGornje.zamenik1 = zamenik1GornjeF
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.filijala.sakljucariGornje.zamenik2 = zamenik2GornjeF
+  //       ? kadrovskiBroj
+  //       : null;
 
-      updatedGroups.filijala.sakljucariDonje.sakljucar = sakljucarDonjeF
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.filijala.sakljucariDonje.zamenik1 = zamenik1DonjeF
-        ? kadrovskiBroj
-        : null;
-      updatedGroups.filijala.sakljucariDonje.zamenik2 = zamenik2DonjeF
-        ? kadrovskiBroj
-        : null;
+  //     updatedGroups.filijala.sakljucariDonje.sakljucar = sakljucarDonjeF
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.filijala.sakljucariDonje.zamenik1 = zamenik1DonjeF
+  //       ? kadrovskiBroj
+  //       : null;
+  //     updatedGroups.filijala.sakljucariDonje.zamenik2 = zamenik2DonjeF
+  //       ? kadrovskiBroj
+  //       : null;
 
-      return updatedGroups;
-    });
-  }, [
-    sakljucarGornjeF,
-    zamenik1GornjeF,
-    zamenik2GornjeF,
-    sakljucarDonjeF,
-    zamenik1DonjeF,
-    zamenik2DonjeF,
-  ]);
+  //     return updatedGroups;
+  //   });
+  // }, [
+  //   sakljucarGornjeF,
+  //   zamenik1GornjeF,
+  //   zamenik2GornjeF,
+  //   sakljucarDonjeF,
+  //   zamenik1DonjeF,
+  //   zamenik2DonjeF,
+  // ]);
   //////////////////////////////////////////////////////////////////////////////////
 
   console.log();

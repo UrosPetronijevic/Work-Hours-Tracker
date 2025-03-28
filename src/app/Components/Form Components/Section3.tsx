@@ -8,22 +8,40 @@ import Nbs from "./Subsections/Nbs";
 import Nepredvidjeni from "./Subsections/Nepredvidjeni";
 import Prijem from "./Subsections/Prijem";
 import Vozaci from "./Subsections/Vozaci";
+import { Employee } from "../Classes/Employee";
+import { group } from "console";
 
 type Section3Props = {
-  pripravnost: boolean;
+  setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
+  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+
+  setForm: React.Dispatch<React.SetStateAction<boolean>>;
+
   sakljucarFilijala: boolean;
   sakljucarEkspozitura: boolean;
   komisijaZaPrijem: boolean;
   komisijaZaNbs: boolean;
   nepredvidjeni: boolean;
   vozac: boolean;
-  kadrovskiBroj: string;
 
-  setGroups: React.Dispatch<React.SetStateAction<Groups>>;
+  ime: string;
+  prezime: string;
+  kadrovskiBroj: string;
+  datumRodjenja: string;
+  radniStaz: string;
+
+  pripravnost: boolean;
+  prevoz: boolean;
+
+  pp: boolean;
+  odredjeno: boolean;
+  neodredjeno: boolean;
+  zadruga: boolean;
 };
 
 export default function Section3({
   pripravnost,
+  prevoz,
   sakljucarFilijala,
   sakljucarEkspozitura,
   komisijaZaPrijem,
@@ -31,7 +49,17 @@ export default function Section3({
   nepredvidjeni,
   vozac,
   setGroups,
+  setEmployees,
+  ime,
+  prezime,
   kadrovskiBroj,
+  datumRodjenja,
+  radniStaz,
+  pp,
+  odredjeno,
+  neodredjeno,
+  zadruga,
+  setForm,
 }: Section3Props) {
   const [sakljucarGornjeF, setSakljucarGornjeF] = useState(false);
   const [zamenik1GornjeF, setZamenik1GornjeF] = useState(false);
@@ -93,6 +121,215 @@ export default function Section3({
 
   const [glavniVozac, setGlavniVozac] = useState<boolean>(false);
   const [zamenikVozaca, setZamenikVozaca] = useState<boolean>(false);
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
+  const getUpdatedValue = (
+    prevValue: string | null,
+    condition: boolean,
+    kadrovskiBroj: string
+  ) => {
+    if (condition) return kadrovskiBroj; // If true, set kadrovskiBroj
+    if (prevValue === kadrovskiBroj) return null; // If false & was kadrovskiBroj, reset to null
+    return prevValue; // Otherwise, keep it as it is
+  };
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const newEmployee = new Employee(
+      ime,
+      prezime,
+      kadrovskiBroj,
+      radniStaz,
+      datumRodjenja,
+      odredjeno,
+      neodredjeno,
+      zadruga,
+      pp,
+      pripravnost,
+      prevoz
+    );
+
+    setEmployees((prev) => [...prev, newEmployee]);
+
+    setGroups((prev) => ({
+      ...prev,
+
+      filijala: {
+        sakljucariGornje: {
+          sakljucar: getUpdatedValue(
+            prev.filijala.sakljucariGornje.sakljucar,
+            sakljucarGornjeF,
+            kadrovskiBroj
+          ),
+          zamenik1: getUpdatedValue(
+            prev.filijala.sakljucariGornje.zamenik1,
+            zamenik1GornjeF,
+            kadrovskiBroj
+          ),
+          zamenik2: getUpdatedValue(
+            prev.filijala.sakljucariGornje.zamenik2,
+            zamenik2GornjeF,
+            kadrovskiBroj
+          ),
+          nepredvidjeni: getUpdatedValue(
+            prev.filijala.sakljucariGornje.nepredvidjeni,
+            nepredvidjeniGornjeF,
+            kadrovskiBroj
+          ),
+        },
+        sakljucariDonje: {
+          sakljucar: getUpdatedValue(
+            prev.filijala.sakljucariDonje.sakljucar,
+            sakljucarDonjeF,
+            kadrovskiBroj
+          ),
+          zamenik1: getUpdatedValue(
+            prev.filijala.sakljucariDonje.zamenik1,
+            zamenik1DonjeF,
+            kadrovskiBroj
+          ),
+          zamenik2: getUpdatedValue(
+            prev.filijala.sakljucariDonje.zamenik2,
+            zamenik2DonjeF,
+            kadrovskiBroj
+          ),
+          nepredvidjeni: getUpdatedValue(
+            prev.filijala.sakljucariDonje.nepredvidjeni,
+            nepredvidjeniDonjeF,
+            kadrovskiBroj
+          ),
+        },
+      },
+
+      ekspozitura: {
+        sakljucariGornje: {
+          sakljucar: getUpdatedValue(
+            prev.ekspozitura.sakljucariGornje.sakljucar,
+            sakljucarGornjeE,
+            kadrovskiBroj
+          ),
+          zamenik1: getUpdatedValue(
+            prev.ekspozitura.sakljucariGornje.zamenik1,
+            zamenik1GornjeE,
+            kadrovskiBroj
+          ),
+          zamenik2: getUpdatedValue(
+            prev.ekspozitura.sakljucariGornje.zamenik2,
+            zamenik2GornjeE,
+            kadrovskiBroj
+          ),
+          nepredvidjeni: getUpdatedValue(
+            prev.ekspozitura.sakljucariGornje.nepredvidjeni,
+            nepredvidjeniGornjeE,
+            kadrovskiBroj
+          ),
+        },
+        sakljucariDonje: {
+          sakljucar: getUpdatedValue(
+            prev.ekspozitura.sakljucariDonje.sakljucar,
+            sakljucarDonjeE,
+            kadrovskiBroj
+          ),
+          zamenik1: getUpdatedValue(
+            prev.ekspozitura.sakljucariDonje.zamenik1,
+            zamenik1DonjeE,
+            kadrovskiBroj
+          ),
+          zamenik2: getUpdatedValue(
+            prev.ekspozitura.sakljucariDonje.zamenik2,
+            zamenik2DonjeE,
+            kadrovskiBroj
+          ),
+          nepredvidjeni: getUpdatedValue(
+            prev.ekspozitura.sakljucariDonje.nepredvidjeni,
+            nepredvidjeniDonjeE,
+            kadrovskiBroj
+          ),
+        },
+      },
+
+      prijem: {
+        predsednik: getUpdatedValue(
+          prev.prijem.predsednik,
+          predsednikKomisijeP,
+          kadrovskiBroj
+        ),
+        zamenikPredsednika: getUpdatedValue(
+          prev.prijem.zamenikPredsednika,
+          zamenikPredsednikaP,
+          kadrovskiBroj
+        ),
+        clanKomisije2: getUpdatedValue(
+          prev.prijem.clanKomisije2,
+          clanKomisije2P,
+          kadrovskiBroj
+        ),
+        zamenikClana2: getUpdatedValue(
+          prev.prijem.zamenikClana2,
+          zamenikClana2P,
+          kadrovskiBroj
+        ),
+        clanKomisije3: getUpdatedValue(
+          prev.prijem.clanKomisije3,
+          clanKomisije3P,
+          kadrovskiBroj
+        ),
+        zamenikClana3: getUpdatedValue(
+          prev.prijem.zamenikClana3,
+          zamenikClana3P,
+          kadrovskiBroj
+        ),
+      },
+
+      nbs: {
+        predsednik: getUpdatedValue(
+          prev.nbs.predsednik,
+          predsednikKomisijeN,
+          kadrovskiBroj
+        ),
+        zamenikPredsednika: getUpdatedValue(
+          prev.nbs.zamenikPredsednika,
+          zamenikPredsednikaN,
+          kadrovskiBroj
+        ),
+        clanKomisije2: getUpdatedValue(
+          prev.nbs.clanKomisije2,
+          clanKomisije2N,
+          kadrovskiBroj
+        ),
+        zamenikClana2: getUpdatedValue(
+          prev.nbs.zamenikClana2,
+          zamenikClana2N,
+          kadrovskiBroj
+        ),
+        clanKomisije3: getUpdatedValue(
+          prev.nbs.clanKomisije3,
+          clanKomisije3N,
+          kadrovskiBroj
+        ),
+        zamenikClana3: getUpdatedValue(
+          prev.nbs.zamenikClana3,
+          zamenikClana3N,
+          kadrovskiBroj
+        ),
+      },
+
+      vozaci: {
+        vozac: getUpdatedValue(prev.vozaci.vozac, glavniVozac, kadrovskiBroj),
+        zamenaVozaca: getUpdatedValue(
+          prev.vozaci.zamenaVozaca,
+          zamenikVozaca,
+          kadrovskiBroj
+        ),
+      },
+    }));
+
+    setForm(false);
+  };
 
   ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -257,7 +494,10 @@ export default function Section3({
         />
       )}
 
-      <button className="bg-[#F99417] self-center p-2 w-[70%] rounded-md">
+      <button
+        className="bg-[#F99417] self-center p-2 w-[70%] rounded-md"
+        onClick={handleSubmit}
+      >
         Zavrsi
       </button>
     </div>

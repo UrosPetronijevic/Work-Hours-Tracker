@@ -108,7 +108,7 @@ export default function page() {
     }
   };
 
-  console.log(`employyes ${employees} and groups ${groups}`);
+  console.log(employees, groups);
 
   if (loading) return <p>Loading...</p>;
 
@@ -139,7 +139,13 @@ export default function page() {
         Dodaj novog clana
       </button>
 
-      {form && <Formpage setEmployees={setEmployees} setGroups={setGroups} />}
+      {form && (
+        <Formpage
+          setEmployees={setEmployees}
+          setGroups={setGroups}
+          setForm={setForm}
+        />
+      )}
     </div>
   );
 }

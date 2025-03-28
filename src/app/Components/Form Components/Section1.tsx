@@ -74,7 +74,7 @@ export default function Section1({
           className="rounded-[.3rem] py-2 border-slate-300 border px-2"
           value={datumRodjenja}
           onChange={(e) => {
-            setKadrovskiBroj(e.target.value);
+            setRadniStaz(e.target.value);
           }}
         />
       </label>
@@ -87,7 +87,7 @@ export default function Section1({
           className="rounded-[.3rem] py-2 border-slate-300 border px-2"
           value={datumRodjenja}
           onChange={(e) => {
-            setKadrovskiBroj(e.target.value);
+            setDatumRodjenja(e.target.value);
           }}
         />
       </label>
