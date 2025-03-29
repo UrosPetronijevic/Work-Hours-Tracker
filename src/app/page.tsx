@@ -7,7 +7,7 @@ export default function Page() {
   const [toggleForm, setToggleForm] = useState<boolean>(false);
 
   return (
-    <div className="max-w-screen bg-red-200 flex justify-center min-h-screen items-center">
+    <div className="max-w-screen bg-red-200 flex justify-center min-h-[85vh] items-center">
       <h1 className="text-7xl">hello</h1>
       <button
         className="bg-green-300 px-4 py-2"

@@ -5,6 +5,18 @@ type TableNavProps = {
   setActiveTable: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
+const tableNames = [
+  "Mor",
+  "Pripravnost",
+  "Prevoz",
+  "Dodatno opt.",
+  "Prekovremeni",
+  "PP Mor",
+  "PP Prevoz",
+  "Omladinska Mor",
+  "Zadruga Mor",
+];
+
 export default function TableNav({
   activeTable,
   setActiveTable,
@@ -15,17 +27,15 @@ export default function TableNav({
 
   return (
     <div className="grid grid-cols-9">
-      {Array.from({ length: 9 }, (_, i) => (
+      {tableNames.map((name, i) => (
         <button
           key={i}
-          onClick={() => handleTableClick(`Table${i + 1}`)}
-          className={`px-4 py-2  ${
-            activeTable === `Table${i + 1}`
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200"
+          onClick={() => handleTableClick(name)}
+          className={`px-4 py-2 ${
+            activeTable === name ? "bg-blue-500 text-white" : "bg-gray-200"
           }`}
         >
-          Table {i + 1}
+          {name}
         </button>
       ))}
     </div>

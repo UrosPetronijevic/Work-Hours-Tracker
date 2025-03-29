@@ -85,23 +85,23 @@ export default function page() {
 
   const renderTable = () => {
     switch (activeTable) {
-      case "Table1":
+      case "Mor":
         return <Table1 employees={employees} />;
-      case "Table2":
+      case "Pripravnost":
         return <Table2 employees={employees} />;
-      case "Table3":
+      case "Prevoz":
         return <Table3 />;
-      case "Table4":
+      case "Dodatno opt.":
         return <Table4 />;
-      case "Table5":
+      case "Prekovremeni":
         return <Table5 />;
-      case "Table6":
+      case "PP Mor":
         return <Table6 />;
-      case "Table7":
+      case "PP Prevoz":
         return <Table7 />;
-      case "Table8":
+      case "Omladinska Mor":
         return <Table8 />;
-      case "Table9":
+      case "Zadruga Mor":
         return <Table9 />;
       default:
         return <Table1 employees={employees} />;
